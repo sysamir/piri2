@@ -1,7 +1,7 @@
 jQuery(function($) {
 
 	"use strict";
-	
+
 
 	/**
 	 * Sticky Header
@@ -11,13 +11,13 @@ jQuery(function($) {
 		$(".navbar").toggleClass("navbar-sticky");
 		return false;
 	}, { offset: "-20px" });
-	
-	
-	
+
+
+
 	/**
 	 * Main Menu Slide Down Effect
 	 */
-	 
+
 	// Mouse-enter dropdown
 	$('#navbar li').on("mouseenter", function() {
 			$(this).find('ul').first().stop(true, true).delay(350).slideDown(500, 'easeInOutQuad');
@@ -27,21 +27,21 @@ jQuery(function($) {
 	$('#navbar li').on("mouseleave", function() {
 			$(this).find('ul').first().stop(true, true).delay(100).slideUp(150, 'easeInOutQuad');
 	});
-	
-	
-	
+
+
+
 	/**
 	 * Effect to Bootstrap Dropdown
 	 */
-	$('.bt-dropdown-click').on('show.bs.dropdown', function(e) {   
-		$(this).find('.dropdown-menu').first().stop(true, true).slideDown(500, 'easeInOutQuad'); 
-	}); 
-	$('.bt-dropdown-click').on('hide.bs.dropdown', function(e) { 
-		$(this).find('.dropdown-menu').first().stop(true, true).slideUp(250, 'easeInOutQuad'); 
+	$('.bt-dropdown-click').on('show.bs.dropdown', function(e) {
+		$(this).find('.dropdown-menu').first().stop(true, true).slideDown(500, 'easeInOutQuad');
 	});
-	
-	
-	
+	$('.bt-dropdown-click').on('hide.bs.dropdown', function(e) {
+		$(this).find('.dropdown-menu').first().stop(true, true).slideUp(250, 'easeInOutQuad');
+	});
+
+
+
 	/**
 	 * Icon Change on Collapse
 	 */
@@ -52,10 +52,10 @@ jQuery(function($) {
 	.on('hide.bs.collapse', function(a) {
 		$(a.target).prev('.panel-heading').removeClass('active');
 	});
-	
-	
-	
-	
+
+
+
+
 	/**
 	 * Smooth scroll to anchor
 	 */
@@ -66,16 +66,16 @@ jQuery(function($) {
 				target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
 				if (target.length) {
 					$('html,body').animate({
-						scrollTop: (target.offset().top - 140) 
+						scrollTop: (target.offset().top - 140)
 					}, 1000);
 					return false;
 				}
 			}
 		});
 	});
-	
-	
-	
+
+
+
 	/**
 	 * Slicknav - a Mobile Menu
 	 */
@@ -88,18 +88,18 @@ jQuery(function($) {
 		openedSymbol: '<i class="fa fa-minus"></i>',
 		prependTo: '#slicknav-mobile',
 		allowParentLinks: true,
-		label:"" 
+		label:""
 	});
 
-	
-	
+
+
 	/**
 	 * Sign-in and Sign-up modal
 	 */
-	 
+
 	$.fn.modal.defaults.spinner = $.fn.modalmanager.defaults.spinner = '<div class="loading-spinner" style="width: 120px; margin-left: -60px; margin-top: -30px;>' +
 		'<div class="modal-ajax-loading">' +
-			'<img src="images/ajax-loading.gif" alt="image" />' +
+			'<img src="client/images/ajax-loading.gif" alt="image" />' +
 		'</div>' +
 	'</div>';
 
@@ -107,14 +107,14 @@ jQuery(function($) {
 
 	$(document).on('click', '.btn-ajax-login,.login-box-box-action a' ,function(){
 		// create the backdrop and wait for next modal to be triggered
-		
+
 		$modalForgotPassword.modal('hide');
 		$modalRegister.modal('hide');
 
 		$('body').modalmanager('loading');
 
 		setTimeout(function(){
-			 $modal.load('ajax-login-modal-login.html', '', function(){
+			 $modal.load(loginModal, '', function(){
 				$modal.modal();
 			});
 		}, 1000);
@@ -132,7 +132,7 @@ jQuery(function($) {
 		$('body').modalmanager('loading');
 
 		setTimeout(function(){
-			 $modalRegister.load('ajax-login-modal-register.html', '', function(){
+			 $modalRegister.load(registerModal, '', function(){
 				$modalRegister.modal();
 			});
 		}, 1000);
@@ -151,27 +151,27 @@ jQuery(function($) {
 
 		setTimeout(function(){
 
-			 $modalForgotPassword.load('ajax-login-modal-forgot-password.html', '', function(){
+			 $modalForgotPassword.load(forgotModal, '', function(){
 				$modalForgotPassword.modal();
 			});
 
 		}, 1000);
 
 	});
-	
+
 
 	/**
 	 * Show more-less button
 	 */
-	
+
 	$('.btn-more-photo').on("click",function(){
 		$(this).text(function(i,old){
 			return old=='More photos' ?  'Hide' : 'More photos';
 		});
 	});
 
-	
-	
+
+
 	/**
 	 * Another Bootstrap Toggle
 	 */
@@ -189,9 +189,9 @@ jQuery(function($) {
 			$(this).next('.another-toggle-content').slideDown();
 		}
 	});
-	
-	
-	
+
+
+
 	/**
 	 * Back To Top
 	 */
@@ -206,77 +206,77 @@ jQuery(function($) {
 			$('html, body').animate({ scrollTop:0 }, '800');
 			return false;
 	});
-	
-	
+
+
 	/**
 	 * Bootstrap Tooltip
 	 */
 	$(function () {
 		$('[data-toggle="tooltip"]').tooltip()
 	})
-	
-	
+
+
 	/**
 	 *  Arrow for Menu has sub-menu
 	 */
-	 
+
 	/* if ($(window).width() > 992) {
 		$(".navbar-arrow > ul > li").has("ul").children("a").append("<i class='arrow-indicator fa fa-angle-down'></i>");
 	} */
-	
+
 	if ($(window).width() > 992) {
 		$(".navbar-arrow ul ul > li").has("ul").children("a").append("<i class='arrow-indicator fa fa-angle-right'></i>");
 	}
-	
-	
-	
+
+
+
 	// PLACEHOLDER //
 	$("input, textarea").placeholder();
-	
-	
+
+
 	/**
 	 * Fancy - Custom Select
 	 */
 	$('.custom-select').fancySelect(); // Custom select
-	
-	
-	
+
+
+
 	/**
 	 * Show-hide search form
 	 */
-	$(".search-button").on("click", function(e) { 
+	$(".search-button").on("click", function(e) {
 
 		e.preventDefault();
-		
+
 		if(!$(".search-button").hasClass("open")) {
-		
+
 			$("#search-container").fadeIn(100);
 			$(".search-button").css("visibility", "hidden");
-			
+
 		} else {
-			
-			$("#search-container").fadeOut(100);	
+
+			$("#search-container").fadeOut(100);
 			$(".search-button").css("visibility", "visible");
-		
+
 		}
-		
+
 	});
-	
+
 	$("#search-form").append('<a class="search-form-close" href="#"><i class="fa fa-times"></i></a>');
-	
+
 	$("#search-form a.search-form-close").on("click", function(event){
-		
+
 		event.preventDefault();
 		$("#search-container").fadeOut(100);
 		$(".search-button").css("visibility", "visible");
-		
+
 	});
 
-	
+
 	/**
 	 * Slick
 	 */
-	
+
 	$('.slick-hero-slider').slick({
 		dots: true,
 		infinite: true,
@@ -292,7 +292,7 @@ jQuery(function($) {
 		autoplaySpeed: 4500,
 		pauseOnHover: true,
 	});
-	
+
 	/**
 	 * Gallery Slideshow - slick
 	 */
@@ -319,19 +319,19 @@ jQuery(function($) {
 			settings: {
 				slidesToShow: 7,
 				}
-			}, 
+			},
 			{
 			breakpoint: 991,
 			settings: {
 				slidesToShow: 6,
 				}
-			}, 
+			},
 			{
 			breakpoint: 767,
 			settings: {
 				slidesToShow: 5,
 				}
-			}, 
+			},
 			{
 			breakpoint: 480,
 			settings: {
@@ -364,19 +364,19 @@ jQuery(function($) {
 			settings: {
 				slidesToShow: 7,
 				}
-			}, 
+			},
 			{
 			breakpoint: 991,
 			settings: {
 				slidesToShow: 6,
 				}
-			}, 
+			},
 			{
 			breakpoint: 767,
 			settings: {
 				slidesToShow: 5,
 				}
-			}, 
+			},
 			{
 			breakpoint: 480,
 			settings: {
@@ -385,7 +385,7 @@ jQuery(function($) {
 			}
 		]
 	});
-	
+
 	$('.slick-testimonial').slick({
 		slidesToShow: 1,
 		slidesToScroll: 1,
@@ -411,19 +411,19 @@ jQuery(function($) {
 			settings: {
 				slidesToShow: 3,
 				}
-			}, 
+			},
 			{
 			breakpoint: 991,
 			settings: {
 				slidesToShow: 3,
 				}
-			}, 
+			},
 			{
 			breakpoint: 767,
 			settings: {
 				slidesToShow: 3,
 				}
-			}, 
+			},
 			{
 			breakpoint: 480,
 			settings: {
@@ -456,19 +456,19 @@ jQuery(function($) {
 			settings: {
 				slidesToShow: 5,
 				}
-			}, 
+			},
 			{
 			breakpoint: 991,
 			settings: {
 				slidesToShow: 4,
 				}
-			}, 
+			},
 			{
 			breakpoint: 767,
 			settings: {
 				slidesToShow: 3,
 				}
-			}, 
+			},
 			{
 			breakpoint: 480,
 			settings: {
@@ -503,19 +503,19 @@ jQuery(function($) {
 				settings: {
 					slidesToShow: 5,
 					}
-				}, 
+				},
 				{
 				breakpoint: 991,
 				settings: {
 					slidesToShow: 4,
 					}
-				}, 
+				},
 				{
 				breakpoint: 767,
 				settings: {
 					slidesToShow: 3,
 					}
-				}, 
+				},
 				{
 				breakpoint: 480,
 				settings: {
@@ -526,6 +526,5 @@ jQuery(function($) {
 		});
 
 	});
-	
-});
 
+});

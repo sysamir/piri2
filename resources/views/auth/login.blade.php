@@ -28,7 +28,7 @@
 <body class="login-page">
     <div class="login-box">
         <div class="logo">
-            <a href="javascript:void(0);">e-sınaq.az</a>
+            <a href="javascript:void(0);">GoTender</a>
             <small>İdarəetmə panelinə giriş</small>
         </div>
 

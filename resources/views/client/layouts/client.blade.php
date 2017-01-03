@@ -348,69 +348,6 @@
 <!-- end Back To Top -->
 
 <div id="ajaxLoginModal" class="modal fade login-box-wrapper" data-width="500" data-backdrop="static" data-keyboard="false" tabindex="-1" style="display: none;">
-	<div class="modal-header">
-		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-		<h4 class="modal-title text-center">Sign-in into your account</h4>
-	</div>
-	<div class="modal-body">
-	<div class="row gap-20">
-
-		<div class="col-md-6">
-			<button class="btn btn-facebook btn-block">Log-in with Facebook</button>
-		</div>
-		<div class="col-md-6">
-			<button class="btn btn-google-plus btn-block">Log-in with Google+</button>
-		</div>
-
-		<div class="col-md-12">
-			<div class="login-modal-or">
-				<div><span>or</span></div>
-			</div>
-		</div>
-
-		<div class="col-sm-12 col-md-12">
-
-			<div class="form-group">
-				<label>Username</label>
-				<input class="form-control" placeholder="Min 4 and Max 10 characters" type="text">
-			</div>
-
-		</div>
-
-		<div class="col-sm-12 col-md-12">
-
-			<div class="form-group">
-				<label>Password</label>
-				<input class="form-control" placeholder="Min 4 and Max 10 characters" type="text">
-			</div>
-
-		</div>
-
-		<div class="col-sm-6 col-md-6">
-			<div class="checkbox-block">
-				<input id="remember_me_checkbox" name="remember_me_checkbox" class="checkbox" value="First Choice" type="checkbox">
-				<label class="" for="remember_me_checkbox">Remember me</label>
-			</div>
-		</div>
-
-		<div class="col-sm-6 col-md-6">
-			<div class="login-box-link-action">
-				<a data-toggle="modal" href="#forgotPasswordModal">Forgot password?</a>
-			</div>
-		</div>
-
-		<div class="col-sm-12 col-md-12">
-			<div class="register-box-box-action">
-				No account? <a data-toggle="modal" href="javascript:void(0)" class="registerModal">Register</a>
-			</div>
-		</div>
-
-	</div>
-</div>
-<div class="modal-footer text-center">
-	<button type="button" class="btn btn-primary">Log-in</button>
-	<button type="button" data-dismiss="modal" class="btn btn-default modalClose">Close</button>
-</div>
 
 
 </div>
@@ -420,7 +357,11 @@
 
 <div id="ajaxForgotPasswordModal" class="modal fade login-box-wrapper" data-width="500" data-backdrop="static" data-keyboard="false" tabindex="-1" style="display: none;"></div>
 
-
+<script type="text/javascript">
+	var loginModal = "{{ url('login-modal') }}";
+	var registerModal = "{{ url('register-modal') }}";
+	var forgotModal = "{{ url('forgot-modal') }}";
+</script>
 
 <!-- JS Global -->
 <script type="text/javascript" src="/client/js/jquery-2.2.4.min.js"></script>
@@ -438,11 +379,6 @@
 <script type="text/javascript" src="/client/js/customs.js"></script>
 
 
-
 </body>
 
-
-
-
-<!-- Mirrored from crenoveative.com/envato/taladrod/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 02 Jan 2017 19:56:48 GMT -->
 </html>

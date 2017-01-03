@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('client.index');
 });
 
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
@@ -23,4 +24,15 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
 
 
+  });
+
+  //modallar
+  Route::get('/login-modal', function () {
+      return view('client.layouts.login-modal');
+  });
+  Route::get('/register-modal', function () {
+      return view('client.layouts.register-modal');
+  });
+  Route::get('/forgot-modal', function () {
+      return view('client.layouts.forgot-modal');
   });

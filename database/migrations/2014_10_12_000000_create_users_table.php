@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->integer('user_role_id'); //sonradan elave
+            $table->integer('user_role')->default('0');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -21,6 +21,10 @@ class CreateCompanies extends Migration
             $table->string('c_voen');
             $table->string('c_number');
             $table->string('c_official_mail');
+
+            $table->integer('c_user_id')->unsigned();
+            $table->foreign('c_user_id')->references('id')->on('users');
+
             $table->timestamps();
         });
     }
