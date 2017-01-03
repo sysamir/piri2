@@ -15,24 +15,21 @@ Route::get('/', function () {
     return view('client.index');
 });
 
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'dash', 'middleware' => 'auth'], function () {
+    Route::get('/', function () {return view('admin.index');});
+    Route::resource('/istifadechiler','SiteUsersController');
+});
 
-
-
-  });
-
-  //modallar
-  Route::get('/login-modal', function () {
-      return view('client.layouts.login-modal');
-  });
-  Route::get('/register-modal', function () {
-      return view('client.layouts.register-modal');
-  });
-  Route::get('/forgot-modal', function () {
-      return view('client.layouts.forgot-modal');
-  });
+//modallar
+Route::get('/login-modal', function () {
+    return view('client.layouts.login-modal');
+});
+Route::get('/register-modal', function () {
+    return view('client.layouts.register-modal');
+});
+Route::get('/forgot-modal', function () {
+    return view('client.layouts.forgot-modal');
+});

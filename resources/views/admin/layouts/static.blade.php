@@ -234,13 +234,100 @@
             <!-- #User Info -->
             <!-- Menu -->
             <div class="menu">
+                <ul class="list">
+                    <li class="header">Naviqasiya</li>
+                    <li class="active">
+                        <a href="/dash">
+                            <i class="material-icons">home</i>
+                            <span>Panel</span>
+                        </a>
+                    </li>
+                    <!-- <li>
+                        <a href="">
+                            <i class="material-icons">group</i>
+                            <span>Qruplar</span>
+                        </a>
+                    </li>
 
+                    <li>
+                        <a href="">
+                            <i class="material-icons">translate</i>
+                            <span>Fənlər</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="">
+                            <i class="material-icons">subject</i>
+                            <span>Mövzular</span>
+                        </a>
+                    </li> -->
+
+
+
+                    <li>
+                        <a href="{{ route('istifadechiler.index') }}">
+                            <i class="material-icons">person</i>
+                            <span>İstifadəçilər</span>
+                        </a>
+                    </li>
+
+
+
+                    <!-- <li>
+                        <a href="">
+                            <i class="material-icons">help_outline</i>
+                            <span>Suallar</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="">
+                            <i class="material-icons">description</i>
+                            <span>İmtahanlar</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="">
+                            <i class="material-icons">donut_large</i>
+                            <span>Nəticələr</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="">
+                            <i class="material-icons">directions_walk</i>
+                            <span>Tələbələr</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="">
+                            <i class="material-icons">email</i>
+                            <span>Poçt qutusu</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="">
+                            <i class="material-icons">settings</i>
+                            <span>Tənzimləmələr</span>
+                        </a>
+                    </li> -->
+
+
+
+
+
+
+                </ul>
             </div>
             <!-- #Menu -->
             <!-- Footer -->
             <div class="legal">
                 <div class="copyright">
-                    &copy; 2016 <a href="http://e-sinaq.az"> e-sinaq.az</a>.
+                    &copy; 2016 <a href=""> GoTender</a>.
                 </div>
 
             </div>
