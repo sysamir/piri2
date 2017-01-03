@@ -41,12 +41,14 @@
 
 			<div class="form-group">
 				<label>Şifrə</label>
+				<div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
 				<input name="password" class="form-control" placeholder="şifrənizi daxil edin" type="password" required>
 				@if ($errors->has('password'))
 						<span class="help-block">
 								<strong>{{ $errors->first('password') }}</strong>
 						</span>
 				@endif
+			</div>
 			</div>
 
 		</div>

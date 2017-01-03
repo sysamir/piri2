@@ -347,10 +347,11 @@
 </div>
 <!-- end Back To Top -->
 
+
+
 <div id="ajaxLoginModal" class="modal fade login-box-wrapper" data-width="500" data-backdrop="static" data-keyboard="false" tabindex="-1" style="display: none;">
-
-
 </div>
+
 
 <div id="ajaxRegisterModal" class="modal fade login-box-wrapper" data-width="500" data-backdrop="static" data-keyboard="false" tabindex="-1" style="display: none;">
 </div>
@@ -378,7 +379,38 @@
 <script type="text/javascript" src="/client/js/bootstrap-modal.js"></script>
 <script type="text/javascript" src="/client/js/customs.js"></script>
 
+@if(Session::has('mesaj'))
+<div id="sexyModal" class="modal fade login-box-wrapper" data-width="500" data-backdrop="static" data-keyboard="false" tabindex="-1" style="display: none;">
 
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<h4 class="modal-title text-center">Diqqət!</h4>
+	</div>
+
+	<div class="modal-body">
+
+		<div class="row gap-20">
+
+
+			<div class="text-center">
+				<p>{{ Session::get('mesaj') }}</p>
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="modal-footer text-center">
+		<button type="button" data-dismiss="modal" class="btn btn-default">Bağla</button>
+	</div>
+
+</div>
+<script type="text/javascript">
+    $(window).load(function(){
+        $('#sexyModal').modal('show');
+    });
+</script>
+@endif
 </body>
 
 </html>

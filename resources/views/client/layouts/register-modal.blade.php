@@ -1,37 +1,20 @@
-
+<form class="" method="POST" action="{{ url('/') }}">
+	 {{ csrf_field() }}
 <div class="modal-header">
 	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	<h4 class="modal-title text-center">Create your account for free</h4>
+	<h4 class="modal-title text-center">Qeydiyyat</h4>
 </div>
 
 <div class="modal-body">
 
 	<div class="row gap-20">
 
-		<div class="col-md-6">
-			<button class="btn btn-facebook btn-block">Register with Facebook</button>
-		</div>
-		<div class="col-md-6">
-			<button class="btn btn-google-plus btn-block">Register with Google+</button>
-		</div>
-
-		<div class="col-md-12">
-			<div class="login-modal-or">
-				<div><span>or</span></div>
-			</div>
-		</div>
-
-		<form class="" method="POST" action="{{ url('/') }}">
-			 {{ csrf_field() }}
-
-
-
 
 		<div class="col-sm-12 col-md-12">
 
 			<div class="form-group">
-				<label>Username</label>
-				<input class="form-control" value="{{ old('name') }}" name="name" placeholder="Min 4 and Max 10 characters" type="text">
+				<label>İstifadəçi adı</label>
+				<input name="name" class="form-control" placeholder="istifadəçi adı qeyd edin" type="text" required>
 			</div>
 
 		</div>
@@ -39,8 +22,8 @@
 		<div class="col-sm-12 col-md-12">
 
 			<div class="form-group">
-				<label>Email Address</label>
-				<input class="form-control" name="email" value="{{ old('email') }}" placeholder="Enter your email address" type="text">
+				<label>E-Poçt ünvanı</label>
+				<input name="email" class="form-control" placeholder="e-poçt ünvanın daxil edin" type="text" required>
 			</div>
 
 		</div>
@@ -48,8 +31,8 @@
 		<div class="col-sm-12 col-md-12">
 
 			<div class="form-group">
-				<label>Password</label>
-				<input class="form-control" name="password" value="{{ old('password') }}" placeholder="Min 8 and Max 20 characters" type="text">
+				<label>Şifrə</label>
+				<input name="password" class="form-control" placeholder="şifrə ən az 6 simvol olmalıdır" type="password" required>
 			</div>
 
 		</div>
@@ -57,8 +40,8 @@
 		<div class="col-sm-12 col-md-12">
 
 			<div class="form-group">
-				<label>Password Confirmation</label>
-				<input class="form-control" name="password_confirmation" placeholder="Re-type password again" type="text">
+				<label>Şifrənin təkrarı</label>
+				<input name="password_confirmation" class="form-control" placeholder="şifrəni yenidən daxil edin" type="password" required>
 			</div>
 
 		</div>
@@ -67,7 +50,7 @@
 
 			<div class="form-group">
 				<label>Qeydiyyat növü</label>
-				<select class="form-control" name="tip">
+				<select class="form-control" name="tip" required>
 					<option value="user">İstifadəçi</option>
 					<option value="comp">Şirkət</option>
 				</select>
@@ -75,26 +58,25 @@
 
 		</div>
 
-		<div class="modal-footer text-center">
-			<button type="submit" class="btn btn-primary">Log-in</button>
-			<button type="submit" data-dismiss="modal" class="btn btn-default">Close</button>
-		</div>
-			</form>
-
-
 		<div class="col-sm-12 col-md-12">
 			<div class="checkbox-block">
-				<input id="register_accept_checkbox" name="register_accept_checkbox" class="checkbox" value="First Choice" type="checkbox">
-				<label class="" for="register_accept_checkbox">By register, I read &amp; accept <a href="#">the terms</a></label>
+				<input id="register_accept_checkbox" name="register_accept_checkbox" class="checkbox" value="First Choice" type="checkbox" required>
+				<label class="" for="register_accept_checkbox">Mən <a href="#">saytdaxili qaydaları</a> qəbul edirəm.</label>
 			</div>
 		</div>
 
 		<div class="col-sm-12 col-md-12">
 			<div class="login-box-box-action">
-				Already have account? <a data-toggle="modal" href="#loginModal">Log-in</a>
+				Hesabın var? <a data-toggle="modal" href="#loginModal">Daxil ol</a>
 			</div>
 		</div>
 
 	</div>
 
 </div>
+
+<div class="modal-footer text-center">
+	<button type="submit" class="btn btn-primary">Göndər</button>
+	<button type="button" data-dismiss="modal" class="btn btn-default">Bağla</button>
+</div>
+</form>
