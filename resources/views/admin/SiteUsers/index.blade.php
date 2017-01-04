@@ -41,10 +41,12 @@
                                         <td>{{ $user_val->name }}</td>
 
                                         <td>
-                                          @if($user_val->user_status == '1')
+                                          @if($user_val->user_status == '2')
                                           <span class="label label-success"> Aktiv </span>
                                           @elseif($user_val->user_status == '0')
                                           <span class="label label-danger"> Deaktiv </span>
+                                          @elseif($user_val->user_status == '1')
+                                          <span class="label label-warning"> Yoxlanışda </span>
                                           @endif
                                         </td>
 

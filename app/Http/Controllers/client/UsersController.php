@@ -1,26 +1,25 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\client;
 
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller;
 use Mail;
 use Session;
 use App\User;
 use Illuminate\Support\Facades\Redirect;
+use Auth;
 
-class CompanyController extends Controller
+class UsersController extends Controller
 {
-
-
     protected function addUser(Request $request)
     {
-        $validator = validator($request->all(),[
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:user',
-            'password' => 'required|min:6',
-            'password_confirmation' => 'min:6|same:password'
+        $this->validate($request, [
+          'name' => 'required|max:255',
+          'email' => 'required|email|max:255|unique:users',
+          'password' => 'required|min:6|confirmed',
         ]);
+
 
         if($request['tip']=='user'){
           $tip = "0";
@@ -72,4 +71,22 @@ class CompanyController extends Controller
 
     }
 
+    public function profile()
+    {
+      $id = Auth::user()->id;
+      if (Auth::user()->user_role == '0') {
+        # user...
+      }elseif (Auth::user()->user_role == '1') {
+        if (Auth::user()->user_status == '1') {
+          return "edit";
+        }else {
+          $cProfile =  User::with('company')->findOrFail($id);
+          return view('client.cProfile.index',compact('cProfile'));
+        }
+
+      }elseif (Auth::user()->user_role == '2') {
+        # adminseneee...
+      }
+
+    }
 }

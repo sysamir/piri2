@@ -14,7 +14,7 @@
 
 			<div class="form-group">
 				<label>İstifadəçi adı</label>
-				<input name="name" class="form-control" placeholder="istifadəçi adı qeyd edin" type="text" required>
+				<input name="name" class="form-control" placeholder="istifadəçi adı qeyd edin" type="text" >
 			</div>
 
 		</div>
@@ -23,7 +23,7 @@
 
 			<div class="form-group">
 				<label>E-Poçt ünvanı</label>
-				<input name="email" class="form-control" placeholder="e-poçt ünvanın daxil edin" type="text" required>
+				<input name="email" class="form-control" placeholder="e-poçt ünvanın daxil edin" type="text" >
 			</div>
 
 		</div>
@@ -32,7 +32,7 @@
 
 			<div class="form-group">
 				<label>Şifrə</label>
-				<input name="password" class="form-control" placeholder="şifrə ən az 6 simvol olmalıdır" type="password" required>
+				<input name="password" class="form-control" placeholder="şifrə ən az 6 simvol olmalıdır" type="password" >
 			</div>
 
 		</div>
@@ -41,7 +41,7 @@
 
 			<div class="form-group">
 				<label>Şifrənin təkrarı</label>
-				<input name="password_confirmation" class="form-control" placeholder="şifrəni yenidən daxil edin" type="password" required>
+				<input name="password_confirmation" class="form-control" placeholder="şifrəni yenidən daxil edin" type="password" >
 			</div>
 
 		</div>
@@ -50,7 +50,7 @@
 
 			<div class="form-group">
 				<label>Qeydiyyat növü</label>
-				<select class="form-control" name="tip" required>
+				<select class="form-control" name="tip" >
 					<option value="user">İstifadəçi</option>
 					<option value="comp">Şirkət</option>
 				</select>
@@ -60,7 +60,7 @@
 
 		<div class="col-sm-12 col-md-12">
 			<div class="checkbox-block">
-				<input id="register_accept_checkbox" name="register_accept_checkbox" class="checkbox" value="First Choice" type="checkbox" required>
+				<input id="register_accept_checkbox" name="register_accept_checkbox" class="checkbox" value="First Choice" type="checkbox" >
 				<label class="" for="register_accept_checkbox">Mən <a href="#">saytdaxili qaydaları</a> qəbul edirəm.</label>
 			</div>
 		</div>

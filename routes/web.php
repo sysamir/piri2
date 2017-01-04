@@ -11,24 +11,29 @@
 |
 */
 
+Auth::routes();
+
+//clientside
 Route::get('/', function () {
     return view('client.index');
 });
+Route::post('/','client\UsersController@addUser');
+Route::get('/profile','client\UsersController@profile');
 
-Auth::routes();
-Route::post('/','CompanyController@addUser');
-
-Route::group(['prefix' => 'dash', 'middleware' => 'auth'], function () {
-    Route::get('/', function () {return view('admin.index');});
-    Route::resource('/istifadechiler','SiteUsersController');
-});
-
+//registeration mail verification
 Route::get('register/verify/{confirmationCode}', [
     'as' => 'confirmation_path',
-    'uses' => 'CompanyController@confirm'
+    'uses' => 'client\UsersController@confirm'
 ]);
 
-//modallar
+//admin side
+Route::group(['prefix' => 'dash', 'middleware' => 'auth'], function () {
+    Route::get('/', function () {return view('admin.index');});
+    Route::resource('/istifadechiler','admin\UsersController');
+});
+
+
+//clientside load modals
 Route::get('/login-modal', function () {
     return view('client.layouts.login-modal');
 });
