@@ -21,11 +21,17 @@
 			</div>
 		</div>
 
+		<form class="" method="POST" action="{{ url('/') }}">
+			 {{ csrf_field() }}
+
+
+
+
 		<div class="col-sm-12 col-md-12">
 
 			<div class="form-group">
 				<label>Username</label>
-				<input class="form-control" placeholder="Min 4 and Max 10 characters" type="text">
+				<input class="form-control" value="{{ old('name') }}" name="name" placeholder="Min 4 and Max 10 characters" type="text">
 			</div>
 
 		</div>
@@ -34,7 +40,7 @@
 
 			<div class="form-group">
 				<label>Email Address</label>
-				<input class="form-control" placeholder="Enter your email address" type="text">
+				<input class="form-control" name="email" value="{{ old('email') }}" placeholder="Enter your email address" type="text">
 			</div>
 
 		</div>
@@ -43,7 +49,7 @@
 
 			<div class="form-group">
 				<label>Password</label>
-				<input class="form-control" placeholder="Min 8 and Max 20 characters" type="text">
+				<input class="form-control" name="password" value="{{ old('password') }}" placeholder="Min 8 and Max 20 characters" type="text">
 			</div>
 
 		</div>
@@ -52,10 +58,29 @@
 
 			<div class="form-group">
 				<label>Password Confirmation</label>
-				<input class="form-control" placeholder="Re-type password again" type="text">
+				<input class="form-control" name="password_confirmation" placeholder="Re-type password again" type="text">
 			</div>
 
 		</div>
+
+		<div class="col-sm-12 col-md-12">
+
+			<div class="form-group">
+				<label>Qeydiyyat növü</label>
+				<select class="form-control" name="tip">
+					<option value="user">İstifadəçi</option>
+					<option value="comp">Şirkət</option>
+				</select>
+			</div>
+
+		</div>
+
+		<div class="modal-footer text-center">
+			<button type="submit" class="btn btn-primary">Log-in</button>
+			<button type="submit" data-dismiss="modal" class="btn btn-default">Close</button>
+		</div>
+			</form>
+
 
 		<div class="col-sm-12 col-md-12">
 			<div class="checkbox-block">
@@ -72,9 +97,4 @@
 
 	</div>
 
-</div>
-
-<div class="modal-footer text-center">
-	<button type="button" class="btn btn-primary">Log-in</button>
-	<button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
 </div>

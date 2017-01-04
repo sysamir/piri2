@@ -26,6 +26,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
   });
 
+  Route::post('/','CompanyController@addUser');
+
   //modallar
   Route::get('/login-modal', function () {
       return view('client.layouts.login-modal');

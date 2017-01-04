@@ -12,7 +12,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Title Of Site -->
-	<title>TaladRod</title>
+	<title>GoTender.Az</title>
 	<meta name="description" content="HTML Responsive Template for Car Dealer Based on Twitter Bootstrap 3.x.x" />
 	<meta name="keywords" content="car dealer, automotive, car auction, car shop, showroom" />
 	<meta name="author" content="crenoveative">
