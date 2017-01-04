@@ -7,8 +7,10 @@ use App\Http\Controllers\Controller;
 use Mail;
 use Session;
 use App\User;
+use App\Companies;
 use Illuminate\Support\Facades\Redirect;
 use Auth;
+use Storage;
 
 class UsersController extends Controller
 {
@@ -75,18 +77,66 @@ class UsersController extends Controller
     {
       $id = Auth::user()->id;
       if (Auth::user()->user_role == '0') {
-        # user...
+
+        return 'istifadechi profili';
+
       }elseif (Auth::user()->user_role == '1') {
+        //shirket profili
         if (Auth::user()->user_status == '1') {
-          return "edit";
-        }else {
+          return view('client.cProfile.edit',compact(''));
+        }elseif(Auth::user()->user_status == '2') {
           $cProfile =  User::with('company')->findOrFail($id);
+          // dd(Storage::disk('local')->url('CompanieLogo/71bd6c73444ec93d73e0841312d8305e.jpeg'));
           return view('client.cProfile.index',compact('cProfile'));
+        }else{
+          return 'Hesab deaktivdir!';
         }
 
       }elseif (Auth::user()->user_role == '2') {
-        # adminseneee...
+        //admin panele gonder
+        return  Redirect::to('/dash');
       }
+
+    }
+
+    public function companyCreate(Request $request)
+    {
+        $this->validate($request, [
+          'c_name' => 'required',
+          'c_desc' => 'required',
+          'c_voen' => 'required',
+          'c_number' => 'required',
+          'c_official_mail' => 'required',
+          'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+
+        $id = Auth::user()->id;
+
+        $comp = Companies::where('c_user_id', $id)->first();
+
+        if ( ! $comp)
+        {
+          $path = $request->file('image')->store('CompanieLogo');
+          Companies::create([
+              'c_name' => $request['c_name'],
+              'c_logo_image' => $path,
+              'c_desc' => $request['c_desc'],
+              'c_voen' => $request['c_voen'],
+              'c_number' => $request['c_number'],
+              'c_official_mail' => $request['c_official_mail'],
+              'c_user_id' => $id
+          ]);
+
+          $user = User::findOrFail($id);
+          $user->user_status = '2';
+          $user->save();
+        }
+
+
+
+        Session::flash('mesaj', 'Təbriklər şirkət məlumatları göndərildi! Yoxlanışdan sonra aktivləşdiriləcək.');
+        return back();
 
     }
 }

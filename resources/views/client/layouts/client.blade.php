@@ -1,10 +1,5 @@
 <!doctype html>
-<html lang="en">
-
-
-
-
-<!-- Mirrored from crenoveative.com/envato/taladrod/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 02 Jan 2017 19:53:54 GMT -->
+<html lang="az">
 <head>
 
 	<meta charset="utf-8">
@@ -67,22 +62,38 @@
 							<div class="col-xs-12 col-sm-6 clearfix">
 
 
-								<div class="top-header-widget welcome">
-									<p>Welcome Guest | <a href="javascript:void(0)" class="btn-ajax-login" data-toggle="modal">Sign In</a> or  <a href="javascript:void(0)" class="btn-ajax-register" data-toggle="modal">Register</a> </p>
-								</div>
 
+								@if(Auth::check())
+								<div class="top-header-widget welcome">
+									<p>Xoş gəlmisiniz <a href="/profile">{{Auth::user()->name}}</a> |
+									<a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Çıxış</a></p>
+								</div>
+								<form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+										{{ csrf_field() }}
+								</form>
+								@else
+								<div class="top-header-widget welcome">
+									<p>Xoş gəlmisiniz | <a href="javascript:void(0)" class="btn-ajax-login" data-toggle="modal">Daxil olun</a> və ya  <a href="javascript:void(0)" class="btn-ajax-register" data-toggle="modal">Qeydiyyatdan keçin</a> </p>
+								</div>
+								@endif
 							</div>
 
 							<div class="col-sm-6 clearfix hidden-xs">
 
 								<div class="top-header-widget pull-right">
 									<a href="#">
-										<i class="fa fa-comments mr-3"></i> Get quote
+										 Kömək
 									</a>
+
 								</div>
 								<div class="top-header-widget pull-right">
-									<i class="fa fa-phone"></i> call our agent: 1 254 3365
+									<a href="#">
+										 Reklam
+									</a>
+
 								</div>
+
+
 
 							</div>
 
@@ -95,86 +106,21 @@
 				<div class="container">
 
 					<div class="navbar-header">
-						<a class="navbar-brand" href="index.html"><strong class="text-primary">TALAD</strong>Rod</a>
+						<a class="navbar-brand" href="/"><strong class="text-primary">Go</strong>Tender</a>
 					</div>
 
 					<div id="navbar" class="collapse navbar-collapse navbar-arrow pull-left">
 
-						<!-- SEARCH -->
-						<div id="search-container">
-							<form id="search-form" name="search-form" method="get" action="#">
-								<fieldset>
-									<input type="search" name="search" placeholder="Enter your keyword here and then press enter...">
-								</fieldset>
-							</form>
-						</div><!-- search-container -->
 
-						<a class="search-button" href="#"></a>
 
 						<ul class="nav navbar-nav" id="responsive-menu">
-							<li>
-								<a href="#">Home</a>
-								<ul>
-									<li><a href="index.html">Home Default Style</a></li>
-									<li><a href="index-2.html">Home Style 2</a></li>
-									<li><a href="index-3.html">Home Style 3</a></li>
-									<li><a href="index-4.html">Home Style 4</a></li>
-									<li><a href="index-5.html">Home Style 5</a></li>
-									<li><a href="index-6.html">Home Style 6</a></li>
-									<li><a href="index-7.html">Home Style 7</a></li>
-									<li><a href="index-8.html">Home Style 8</a></li>
-									<li><a href="index-9.html">Home Style 9</a></li>
-									<li><a href="index-10.html">Home Style 10</a></li>
-									<li><a href="index-11.html">Home Style 11</a></li>
-								</ul>
-							</li>
-							<li>
-								<a href="#">Car</a>
-								<ul>
-									<li><a href="car-result-grid.html">Car Result - Grid</a></li>
-									<li><a href="car-result-list.html">Car Result - List</a></li>
-									<li><a href="car-detail.html">Car Detail</a></li>
-								</ul>
-							</li>
-							<li>
-								<a href="review.html">Review</a>
-								<ul>
-									<li><a href="review-2.html">Review - style 2</a></li>
-									<li><a href="review-single.html">Review - Single</a></li>
-									<li><a href="review-owner.html">Review Owner</a></li>
-									<li><a href="review-owner-single.html">Review Owner - Single</a></li>
-								</ul>
-							</li>
-							<li>
-								<a href="blog.html">Blog</a>
-								<ul>
-									<li><a href="blog-single.html">Blog - Single</a></li>
-								</ul>
-							</li>
-							<li><a href="about-us.html">About Us</a></li>
-							<li>
-								<a href="#">Pages</a>
-								<ul>
-									<li><a href="faq.html">FAQ</a></li>
-									<li><a href="faq-2.html">FAQ - 2</a></li>
-									<li>
-										<a href="service.html">Service</a>
-										 <ul>
-											<li><a href="service-detail.html">Service Detail</a></li>
-										</ul>
-									</li>
-									<li><a href="static-page.html">Static Page</a></li>
-									<li>
-										<a href="#">Sub-menu</a>
-										 <ul>
-											<li><a href="#">Sub-menu 1</a></li>
-											<li><a href="#">Sub-menu 2</a></li>
-											<li><a href="#">Sub-menu 3</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-							<li><a href="contact.html">Contact</a></li>
+							<li><a style="" href="/"><i  class="fa fa-home fa-1x"></i></a></li>
+							<li><a href="">Bu necə işləyir?</a></li>
+							<li><a href="">Tenderlər</a></li>
+							<li><a href="">Tender Yarat</a></li>
+							<li><a href="">Reytinq</a></li>
+							<li><a href="">Xəbərlər</a></li>
+							<li><a href="">Əlaqə</a></li>
 						</ul>
 
 					</div><!--/.nav-collapse -->

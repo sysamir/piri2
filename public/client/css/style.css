@@ -102,7 +102,7 @@
 .navbar-nav > li > a {
     line-height: 72px;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 16px;
     padding-top: 0;
     padding-bottom: 0;
     -webkit-transition: all 0.3s ease-in-out 0s;
@@ -1348,7 +1348,7 @@ a.search-form-close {
 
 .car-item-02 .content p {
 		margin-top: 10px;
-		font-size: 13px; 
+		font-size: 13px;
 		font-weight: 500;
 		letter-spacing: 1px;
 }
@@ -3307,7 +3307,7 @@ ul.sidebar-cat li.active a {
 }
 
 .side-module-2 .car-review-list-wrapper {
-		margin-top: 30px; 
+		margin-top: 30px;
 }
 
 .side-module-2 .car-review-list-item {
@@ -3513,7 +3513,7 @@ ul.sidebar-cat li.active a {
 .car-review-single .meta {
     font-style: italic;
     margin-bottom: 20px;
-		font-size: 13px; 
+		font-size: 13px;
 		letter-spacing: 1px;
 }
 
@@ -3909,7 +3909,7 @@ ul.browse-by-list.col-7 li {
 
 .all-car-brand-wrapper .mmt {
 		margin-top: -20px;
-}	
+}
 
 ul.call-car-brand-list {
 		margin: 0;

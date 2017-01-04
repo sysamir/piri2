@@ -14,7 +14,7 @@
 
 			<div class="form-group">
 				<label>İstifadəçi adı</label>
-				<input name="name" class="form-control" placeholder="istifadəçi adı qeyd edin" type="text" >
+				<input name="name" class="form-control" placeholder="istifadəçi adı qeyd edin" type="text" required>
 			</div>
 
 		</div>
@@ -23,7 +23,7 @@
 
 			<div class="form-group">
 				<label>E-Poçt ünvanı</label>
-				<input name="email" class="form-control" placeholder="e-poçt ünvanın daxil edin" type="text" >
+				<input name="email" class="form-control" placeholder="e-poçt ünvanın daxil edin" type="text" required>
 			</div>
 
 		</div>
@@ -32,7 +32,7 @@
 
 			<div class="form-group">
 				<label>Şifrə</label>
-				<input name="password" class="form-control" placeholder="şifrə ən az 6 simvol olmalıdır" type="password" >
+				<input name="password" class="form-control" placeholder="şifrə ən az 6 simvol olmalıdır" type="password" required>
 			</div>
 
 		</div>
@@ -41,7 +41,7 @@
 
 			<div class="form-group">
 				<label>Şifrənin təkrarı</label>
-				<input name="password_confirmation" class="form-control" placeholder="şifrəni yenidən daxil edin" type="password" >
+				<input name="password_confirmation" class="form-control" placeholder="şifrəni yenidən daxil edin" type="password" required>
 			</div>
 
 		</div>
@@ -50,7 +50,7 @@
 
 			<div class="form-group">
 				<label>Qeydiyyat növü</label>
-				<select class="form-control" name="tip" >
+				<select class="form-control" name="tip" required>
 					<option value="user">İstifadəçi</option>
 					<option value="comp">Şirkət</option>
 				</select>
@@ -60,8 +60,7 @@
 
 		<div class="col-sm-12 col-md-12">
 			<div class="checkbox-block">
-				<input id="register_accept_checkbox" name="register_accept_checkbox" class="checkbox" value="First Choice" type="checkbox" >
-				<label class="" for="register_accept_checkbox">Mən <a href="#">saytdaxili qaydaları</a> qəbul edirəm.</label>
+				<label class="" >Siz qeydiyyatdan keçməklə <a href="#">saytdaxili qaydaları</a> qəbul edirsiniz.</label>
 			</div>
 		</div>
 

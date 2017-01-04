@@ -17,8 +17,12 @@ Auth::routes();
 Route::get('/', function () {
     return view('client.index');
 });
+Route::get('/home', function () {
+    return  Redirect::to('/profile');
+});
 Route::post('/','client\UsersController@addUser');
 Route::get('/profile','client\UsersController@profile');
+Route::post('/profile','client\UsersController@companyCreate');
 
 //registeration mail verification
 Route::get('register/verify/{confirmationCode}', [

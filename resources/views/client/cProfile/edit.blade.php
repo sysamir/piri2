@@ -1,0 +1,130 @@
+@extends('client.layouts.client')
+
+
+@section('content')
+<div class="main-wrapper scrollspy-container">
+
+			<div class="breadcrumb-wrapper">
+
+				<div class="container">
+
+					<div class="row">
+
+						<div class="col-xs-12 col-sm-6 hidden-xs">
+							<h2 class="page-title">Profil</h2>
+						</div>
+
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="container-outer pb-20">
+
+				<div class="container">
+
+					<div class="contact-wrapper GridLex-gap-30">
+
+						<div class="GridLex-grid-noGutter-equalHeight">
+
+
+
+							<div class="GridLex-col-12_sm-12_xs-12">
+
+								<div class="contact-form-wrapper-boxed">
+
+									<div class="section-title text-left mb-20">
+
+										<h4>Şirkət hesabının redaktəsi</h4>
+
+										<p>  </p>
+
+									</div>
+
+									<form id="contact-form" action="/profile" method="POST" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+
+										<div class="messages"></div>
+
+										<div class="controls">
+
+											<div class="row">
+
+												<div class="col-xs-6 col-sm-6">
+													<div class="form-group">
+														<label for="form_name">Şirkətin adı </label>
+														<input id="form_name" type="text" name="c_name" class="form-control" placeholder="şirkətin adın daxil edin *" required="required" >
+														<div class="help-block with-errors"></div>
+													</div>
+												</div>
+
+												<div class="col-xs-6 col-sm-6">
+													<div class="form-group">
+														<label for="form_email">Vöen </label>
+														<input id="form_email" type="text" name="c_voen" class="form-control" placeholder="vöen -i daxil edin *" >
+														<div class="help-block with-errors"></div>
+													</div>
+												</div>
+
+												<div class="col-xs-6 col-sm-6">
+													<div class="form-group">
+														<label>Telefon nömrəsi</label>
+														<input id="form_lastname" type="text" name="c_number" class="form-control" placeholder="şirkətə aid bir telefon nomrəsi *" required="required" >
+														<div class="help-block with-errors"></div>
+													</div>
+												</div>
+
+                        <div class="col-xs-6 col-sm-6">
+													<div class="form-group">
+														<label>E-Poçt ünvanı</label>
+														<input id="form_lastname" type="text" name="c_official_mail" class="form-control" placeholder="şirkətin rəsimi e-poçt ünvanı *" required="required" >
+														<div class="help-block with-errors"></div>
+													</div>
+												</div>
+
+												<div class="col-xs-12 col-sm-12">
+													<div class="form-group">
+														<label for="form_message">Şirkət haqqında   </label>
+														<textarea id="form_message" name="c_desc" class="form-control" placeholder="Şirhət haqqında məlumat mətni *" rows="8" required="required" ></textarea>
+														<div class="help-block with-errors"></div>
+													</div>
+												</div>
+
+                        <div class="col-xs-6 col-sm-6">
+													<div class="form-group">
+														<label>Şirkətin loqosu</label>
+														<input id="form_lastname" type="file" name="image" class="form-control"  required="required" >
+														<div class="help-block with-errors"></div>
+													</div>
+												</div>
+
+												<div class="col-xs-12 col-sm-12">
+													<input type="submit" class="btn btn-primary btn-send mt-10" value="Saxla">
+												</div>
+
+												<div class="col-md-12">
+														<p class="text-muted font12 mt-20" style="line-height: 1.2;"><span class="font12 text-danger">*</span> işarəli bütün sahələr doldurulmalıdır.</p>
+												</div>
+
+											</div>
+
+										</div>
+
+									</form>
+
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+    @endsection
