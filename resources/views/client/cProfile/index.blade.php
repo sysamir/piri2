@@ -76,7 +76,7 @@
 
                       <div class="contact-item mb-30">
 												<h5>Loqo</h5>
-                        <img src="{{ $cProfile->company->c_loqo_image }}" alt="loqo" />
+                        <img src="{{ $cProfile->company->c_logo_image }}" alt="loqo" />
 											</div>
 
 										</div>
