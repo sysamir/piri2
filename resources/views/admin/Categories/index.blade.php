@@ -12,60 +12,44 @@
                               {{ Session::get('mesaj') }}
                           </div>
                       @endif
-
                         <div class="header">
-                            <h2>Qeydiyaytlı istifadəçilər</h2>
-
-
-
-
+                            <h2>Tenderlərin Kateqoriyaları</h2>
+                            <a href="{{route('kateqoriya.create')}}"><button type="button" class="pull-right btn btn-success btn-circle waves-effect waves-circle waves-float">
+                                  <i class="material-icons">add</i>
+                              </button></a>
                         </div>
                         <div class="body table-responsive">
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Istidəçi Adı</th>
-                                        <th>Vəziyyəti</th>
-                                        <th>Status</th>
-                                        <th>Fəaliyyət</th>
+                                        <th>Keteqoriya</th>
 
                                     </tr>
                                 </thead>
 
                                 <tbody>
-
                                   @foreach($cat as $dog)
-
-                                    <tr>
+                                    <tr style="font-size: 18px">
                                         <td scope="row">{{ $dog->cat_id }}</td>
-                                        <td>{{ $dog->cat_name }}</td>
                                         <td>
-                                      @foreach($dog->children as $ping)
-                                        {{ $ping->cat_name }}</br>
-                                        @foreach($ping->children as $a)
-                                        {{ $a->cat_name }}</br>
-                                        @endforeach
-                                        @endforeach
-                                       </td>
-
-                                         <td>
-
-                                      </td>
+                                          <b style="font-size: 24px"><a href="{{ route('kateqoriya.edit', $dog->cat_id) }}">{{ $dog->cat_name }}</a></b><br/>
+                                          @foreach($dog->children as $ping)
+                                          <i style="font-size: 24px" class="material-icons">subdirectory_arrow_right</i>[{{ $ping->cat_id }}] <a href="{{ route('kateqoriya.edit', $ping->cat_id) }}">{{ $ping->cat_name }}</a> </br>
+                                            @foreach($ping->children as $a)
+                                            <i style="font-size: 20px" class="material-icons"> d</i><i style="font-size: 20px" class="material-icons">subdirectory_arrow_right</i>[{{ $a->cat_id }}] <a href="{{ route('kateqoriya.edit', $a->cat_id) }}">{{ $a->cat_name }}</a> </br>
+                                            @endforeach
+                                          @endforeach
+                                        </td>
 
                                     </tr>
-
                                     @endforeach
 
-
-
                                 </tbody>
-
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- #END# Hover Rows -->
-
 @endsection

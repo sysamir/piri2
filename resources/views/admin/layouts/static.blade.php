@@ -275,7 +275,7 @@
 
                     <li>
                         <a href="{{ route('kateqoriya.index') }}">
-                            <i class="material-icons">person</i>
+                            <i class="material-icons">list</i>
                             <span>Kateqoriya</span>
                         </a>
                     </li>

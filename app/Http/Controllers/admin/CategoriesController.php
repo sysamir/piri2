@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Categories;
+use Session;
 
 class CategoriesController extends Controller
 {
@@ -17,11 +18,7 @@ class CategoriesController extends Controller
     public function index()
     {
         $cat =  Categories::with('parent','children')->whereNull('cat_parent')->orderBy('cat_id','desc')->get();
-
-  
-
         return view('admin.Categories.index',compact('cat'));
-
     }
 
     /**
@@ -31,7 +28,8 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+      $cat =  Categories::with('parent','children')->whereNull('cat_parent')->orderBy('cat_id','desc')->get();
+      return view('admin.Categories.create',compact('cat'));
     }
 
     /**
@@ -42,7 +40,19 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $this->validate($request, [
+        'cat_name' => 'required',
+        'cat_parent' => 'required'
+      ]);
+
+      Categories::create([
+          'cat_name' => $request['cat_name'],
+          'cat_slug' => str_slug($request['cat_name'], '-'),
+          'cat_parent' => $request['cat_parent']
+      ]);
+
+      Session::flash('mesaj', 'Yeni kateqoriya əlavə edildi!');
+      return redirect()->route('kateqoriya.index');
     }
 
     /**
@@ -64,7 +74,12 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        //
+      $cat_selected = Categories::with('parent','children')->findOrFail($id);
+      $cat =  Categories::with('parent','children')->whereNull('cat_parent')->orderBy('cat_id','desc')->get();
+      // $t = $cat_selected->parent->cat_id;
+      return view('admin.Categories.edit',compact('cat','cat_selected','t'));
+
+      // dd($t);
     }
 
     /**
@@ -76,7 +91,16 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $this->validate($request, [
+        'cat_name' => 'required',
+        'cat_parent' => 'required'
+      ]);
+
+      $cat = Categories::where('cat_id', $id)->first();
+      $cat->fill($request->all())->save();
+
+      Session::flash('mesaj', 'Kateqoriya redaktə edildi!');
+      return redirect()->route('kateqoriya.index');
     }
 
     /**
@@ -87,6 +111,18 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $cat = Categories::where('cat_id', $id)->first();
+      $cat_childs = Categories::where('cat_parent', $id)->get();
+
+      if (isset($cat_childs)) {
+        foreach ($cat_childs as $key) {
+          $key->delete();
+        }
+      }
+        $cat->delete();
+
+        Session::flash('mesaj', 'Kateqoriya və alt kateqoriyaları silidi!');
+        return redirect()->route('kateqoriya.index');
+
     }
 }
