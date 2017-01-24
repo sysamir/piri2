@@ -20,9 +20,11 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return  Redirect::to('/profile');
 });
-Route::post('/','client\UsersController@addUser');
+Route::post('/adduser','client\UsersController@addUser');
 Route::get('/profile','client\UsersController@profile');
 Route::post('/profile','client\UsersController@companyCreate');
+Route::get('/profile-edit','client\UsersController@personEdit');
+Route::post('/profile-update','client\UsersController@personUpdate');
 
 //registeration mail verification
 Route::get('register/verify/{confirmationCode}', [

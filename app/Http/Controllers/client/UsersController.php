@@ -11,15 +11,15 @@ use App\Companies;
 use Illuminate\Support\Facades\Redirect;
 use Auth;
 use Storage;
+use App\Persons;
 
 class UsersController extends Controller
 {
     protected function addUser(Request $request)
     {
         $this->validate($request, [
-          'name' => 'required|max:255',
           'email' => 'required|email|max:255|unique:users',
-          'password' => 'required|min:6|confirmed',
+          'password' => 'required|min:5|confirmed',
         ]);
 
 
@@ -28,21 +28,25 @@ class UsersController extends Controller
         }elseif ($request['tip']=='comp') {
           $tip = "1";
         }else{
-          $tip = "null";
+          $tip = NULL;
         }
 
         $confirmation_code = str_random(30);
 
-        User::create([
-            'name' => $request['name'],
+        $user_last = User::create([
             'email' => $request['email'],
             'user_role' => $tip,
             'confirmation_code' => $confirmation_code,
             'password' => bcrypt($request['password']),
-        ]);
+        ])->id;
+        if($request['tip']=='user'){
+          Persons::create([
+            'u_user_id' => $user_last,
+          ]);
+        }
         $data = array('kod' => $confirmation_code);
         Mail::send('email.verify', $data, function($message) use ($request){
-            $message->to($request['email'], $request['name'])
+            $message->to($request['email'])
                 ->subject('E-poçt təsdiqi');
         });
 
@@ -77,8 +81,15 @@ class UsersController extends Controller
     {
       $id = Auth::user()->id;
       if (Auth::user()->user_role == '0') {
-
-        return 'istifadechi profili';
+        //user profile
+        if (Auth::user()->user_status == '1') {
+          return redirect('/profile-edit');
+        }elseif(Auth::user()->user_status == '2') {
+          $uProfile =  User::with('person')->findOrFail($id);
+          return view('client.uProfile.index',compact('uProfile'));
+        }else{
+          return 'Hesab deaktivdir!';
+        }
 
       }elseif (Auth::user()->user_role == '1') {
         //shirket profili
@@ -86,7 +97,6 @@ class UsersController extends Controller
           return view('client.cProfile.edit',compact(''));
         }elseif(Auth::user()->user_status == '2') {
           $cProfile =  User::with('company')->findOrFail($id);
-          // dd(Storage::disk('local')->url('CompanieLogo/71bd6c73444ec93d73e0841312d8305e.jpeg'));
           return view('client.cProfile.index',compact('cProfile'));
         }else{
           return 'Hesab deaktivdir!';
@@ -138,5 +148,39 @@ class UsersController extends Controller
         Session::flash('mesaj', 'Təbriklər şirkət məlumatları göndərildi! Yoxlanışdan sonra aktivləşdiriləcək.');
         return back();
 
+    }
+
+    public function personEdit()
+    {
+      $id = Auth::user()->id;
+      $uProfile =  User::with('person')->findOrFail($id);
+      return view('client.uProfile.edit',compact('uProfile'));
+    }
+
+    public function personUpdate(Request $request)
+    {
+      $this->validate($request, [
+        'u_name' => 'required',
+        'u_birth' => 'required',
+        'u_phone' => 'required',
+        'u_gender' => 'required',
+
+      ]);
+
+      $id = Auth::user()->id;
+
+      $person = Persons::where('u_user_id', $id)->first();
+      $person->u_name = $request['u_name'];
+      $person->u_birth = $request['u_birth'];
+      $person->u_phone = $request['u_phone'];
+      $person->u_gender = $request['u_gender'];
+      $person->save();
+
+      $user = User::findOrFail($id);
+      $user->user_status = '2';
+      $user->save();
+
+      Session::flash('mesaj', 'Təbriklər. Məlumatlar uğurla yeniləndi!');
+      return back();
     }
 }

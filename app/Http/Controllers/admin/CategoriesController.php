@@ -41,8 +41,7 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
       $this->validate($request, [
-        'cat_name' => 'required',
-        'cat_parent' => 'required'
+        'cat_name' => 'required'
       ]);
 
       Categories::create([
@@ -76,10 +75,9 @@ class CategoriesController extends Controller
     {
       $cat_selected = Categories::with('parent','children')->findOrFail($id);
       $cat =  Categories::with('parent','children')->whereNull('cat_parent')->orderBy('cat_id','desc')->get();
-      // $t = $cat_selected->parent->cat_id;
-      return view('admin.Categories.edit',compact('cat','cat_selected','t'));
 
-      // dd($t);
+      return view('admin.Categories.edit',compact('cat','cat_selected'));
+
     }
 
     /**
@@ -97,6 +95,7 @@ class CategoriesController extends Controller
       ]);
 
       $cat = Categories::where('cat_id', $id)->first();
+      $request->merge([ 'cat_slug' => str_slug($request['cat_name']) ]);
       $cat->fill($request->all())->save();
 
       Session::flash('mesaj', 'Kateqoriya redaktə edildi!');

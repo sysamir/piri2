@@ -30,4 +30,8 @@ class User extends Authenticatable
     public function company(){
       return $this->hasOne('App\Companies', 'c_user_id', 'id');
     }
+
+    public function person(){
+      return $this->hasOne('App\Persons', 'u_user_id', 'id');
+    }
 }

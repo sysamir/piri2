@@ -1,4 +1,4 @@
-<form class="" method="POST" action="{{ url('/') }}">
+<form class="" method="POST" action="{{ url('/adduser') }}">
 	 {{ csrf_field() }}
 <div class="modal-header">
 	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -9,15 +9,6 @@
 
 	<div class="row gap-20">
 
-
-		<div class="col-sm-12 col-md-12">
-
-			<div class="form-group">
-				<label>İstifadəçi adı</label>
-				<input name="name" class="form-control" placeholder="istifadəçi adı qeyd edin" type="text" required>
-			</div>
-
-		</div>
 
 		<div class="col-sm-12 col-md-12">
 

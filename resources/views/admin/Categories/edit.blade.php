@@ -8,7 +8,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                              Yeni Kateqoriya yaratmaq
+                              Redaktə
                             </h2>
 
                         </div>
@@ -59,7 +59,7 @@
                                     </div>
                                 </div>
                             </form>
-                            
+
                               <form id="cat_sil" action="{{ route('kateqoriya.destroy', $cat_selected->cat_id) }}" method="post">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="_method" value="DELETE">
