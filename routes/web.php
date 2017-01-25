@@ -47,7 +47,11 @@ Route::group(['prefix' => 'dash', 'middleware' => 'auth'], function () {
 // client side for logged in users
 Route::group(['middleware' => 'auth'], function () {
 
-  Route::resource('/tender-yarat','client\TenderController');
+  Route::resource('/tender','client\TenderController');
+  Route::get('/xeberler', [
+      'as' => 'xeberler',
+      'uses' => 'client\BlogController@index'
+  ]);
 
 });
 

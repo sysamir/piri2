@@ -43,7 +43,7 @@
 
 									</div>
 
-									<form id="contact-form" action="{{ route('tender-yarat.index') }}" method="POST" enctype="multipart/form-data">
+									<form id="contact-form" action="{{ route('tender.index') }}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
 
 										<div class="messages"></div>

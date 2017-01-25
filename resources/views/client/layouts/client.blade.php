@@ -8,9 +8,9 @@
 
 	<!-- Title Of Site -->
 	<title>GoTender.Az</title>
-	<meta name="description" content="HTML Responsive Template for Car Dealer Based on Twitter Bootstrap 3.x.x" />
-	<meta name="keywords" content="car dealer, automotive, car auction, car shop, showroom" />
-	<meta name="author" content="crenoveative">
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="author" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 	<!-- Fav and Touch Icons -->
@@ -65,11 +65,8 @@
 
 								@if(Auth::check())
 								<div class="top-header-widget welcome">
-<<<<<<< HEAD
 									<p><a href="/profile">Hesabım</a>  |
-=======
-									<p><a href="/profile">Hesabım</a> |
->>>>>>> 14ef4a5021948438eda4423baf07dbf576277a91
+
 									<a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Çıxış</a></p>
 								</div>
 								<form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
@@ -121,9 +118,9 @@
 							<li><a style="" href="/"><i  class="fa fa-home fa-1x"></i></a></li>
 							<li><a href="">Bu necə işləyir?</a></li>
 							<li><a href="">Tenderlər</a></li>
-							<li><a href="/tender-yarat">Tender Yarat</a></li>
+							<li><a href="{{route('tender.create')}}">Tender Yarat</a></li>
 							<li><a href="">Reytinq</a></li>
-							<li><a href="">Xəbərlər</a></li>
+							<li><a href="{{route('xeberler')}}">Xəbərlər</a></li>
 							<li><a href="">Əlaqə</a></li>
 						</ul>
 
