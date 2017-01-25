@@ -39,6 +39,13 @@ Route::group(['prefix' => 'dash', 'middleware' => 'auth'], function () {
     Route::resource('/istifadechiler','admin\UsersController');
 });
 
+// client side for logged in users
+Route::group(['middleware' => 'auth'], function () {
+
+  Route::resource('/tender-yarat','client\TenderController');
+
+});
+
 
 //clientside load modals
 Route::get('/login-modal', function () {

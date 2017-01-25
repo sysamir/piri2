@@ -65,7 +65,7 @@
 
 								@if(Auth::check())
 								<div class="top-header-widget welcome">
-									<p><a href="/profile">Hesabım</a> | <a href="/profile">Tender Yarat</a> |
+									<p><a href="/profile">Hesabım</a>  |
 									<a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Çıxış</a></p>
 								</div>
 								<form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
@@ -117,7 +117,7 @@
 							<li><a style="" href="/"><i  class="fa fa-home fa-1x"></i></a></li>
 							<li><a href="">Bu necə işləyir?</a></li>
 							<li><a href="">Tenderlər</a></li>
-							<li><a href="">Tender Yarat</a></li>
+							<li><a href="/tender-yarat">Tender Yarat</a></li>
 							<li><a href="">Reytinq</a></li>
 							<li><a href="">Xəbərlər</a></li>
 							<li><a href="">Əlaqə</a></li>
