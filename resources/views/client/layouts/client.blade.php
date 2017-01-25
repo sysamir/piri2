@@ -65,7 +65,11 @@
 
 								@if(Auth::check())
 								<div class="top-header-widget welcome">
+<<<<<<< HEAD
 									<p><a href="/profile">Hesabım</a>  |
+=======
+									<p><a href="/profile">Hesabım</a> |
+>>>>>>> 14ef4a5021948438eda4423baf07dbf576277a91
 									<a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Çıxış</a></p>
 								</div>
 								<form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">

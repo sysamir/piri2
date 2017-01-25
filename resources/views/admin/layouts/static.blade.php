@@ -280,6 +280,20 @@
                         </a>
                     </li>
 
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">web</i>
+                            <span>Bloq</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="{{ route('blog-categories.index') }}">Kateqoriya</a>
+                                <a href="{{ route('blog-news.index') }}">Xəbərlər</a>
+                            </li>
+
+                        </ul>
+                    </li>
+
 
 
                     <!-- <li>

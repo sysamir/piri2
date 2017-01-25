@@ -37,6 +37,11 @@ Route::group(['prefix' => 'dash', 'middleware' => 'auth'], function () {
     Route::resource('/kateqoriya','admin\CategoriesController');
     Route::get('/', function () {return view('admin.index');});
     Route::resource('/istifadechiler','admin\UsersController');
+
+    //blog
+    Route::resource('/blog-categories','admin\BlogCategoriesController');
+    Route::resource('/blog-news','admin\BlogNewsController');
+    Route::get('/blog-newsearch/search',['uses' => 'admin\BlogNewsController@getSearch','as' => 'search']);
 });
 
 // client side for logged in users
