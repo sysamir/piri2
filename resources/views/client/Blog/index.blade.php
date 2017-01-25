@@ -2,7 +2,6 @@
 
 
 @section('blog')
-
 <div class="content-wrapper">
 @foreach($blog as $children)
   <div class="classic-blog-item">
@@ -34,18 +33,11 @@
   </div>
 @endforeach
 
-
-
-
-
-
   <div class="paging-wrapper clearfix">
-
     <nav class="pull-right">
       {{ $blog->links('client.Blog.paginate') }}
     </nav>
-
   </div>
 
 </div>
-  @endsection
+@endsection

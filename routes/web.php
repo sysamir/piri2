@@ -52,6 +52,7 @@ Route::group(['middleware' => 'auth'], function () {
       'as' => 'xeberler',
       'uses' => 'client\BlogController@index'
   ]);
+  Route::get('/xeber/{id}/{slug}','client\BlogController@post');
 
 });
 
