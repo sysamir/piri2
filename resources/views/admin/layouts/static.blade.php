@@ -85,7 +85,7 @@
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="index.html">GoTender.az idarəetmə paneli</a>
+                <a class="navbar-brand" href="{{url('/')}}">GoTender.az idarəetmə paneli</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -294,6 +294,13 @@
                         </ul>
                     </li>
 
+                    <li>
+                        <a href="{{url('/dash/settings')}}">
+                            <i class="material-icons">settings</i>
+                            <span>Nizamlamalar</span>
+                        </a>
+                    </li>
+
 
 
                     <!-- <li>
@@ -397,6 +404,10 @@
 
     <!-- Sparkline Chart Plugin Js -->
     <script src="/admin/plugins/jquery-sparkline/jquery.sparkline.js"></script>
+
+    <!-- Bootstrap Tags Input Plugin Js -->
+    <script src="/admin/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
+
 
     <!-- Custom Js -->
     <script src="/admin/js/admin.js"></script>

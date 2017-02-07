@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\BlogNews;
+use App\BlogCategories;
 
 class HomeController extends Controller
 {
@@ -11,10 +13,6 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     /**
      * Show the application dashboard.
@@ -23,6 +21,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $blog = BlogNews::with('blogcat')->orderBy('blog_id','desc')->limit(3)->get();
+        return view('client.index',compact('blog'));
     }
 }

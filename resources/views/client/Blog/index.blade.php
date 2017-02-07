@@ -1,3 +1,4 @@
+@section('title', 'Xəbərlər')
 @extends('client.layouts.blog')
 
 
@@ -16,8 +17,8 @@
           {{ $children->blogcat->cat_name }}
         </div>
       </div>
-      <h4><a href="{{url('/blog/'.$children->blog_id.'/'.$children->blog_slug)}}">{{ $children->blog_title }}</a></h4>
-      <p>{{ $children->blog_descp }}</p>
+      <h4><a href="{{url('/xeber/'.$children->blog_id.'/'.$children->blog_slug)}}">{{ $children->blog_title }}</a></h4>
+      <p>{{ substr($children->blog_descp,0,250) }}...</p>
     </div>
     <div class="bottom">
       <div class="row">
@@ -26,7 +27,7 @@
 												</ul>
 											</div>
         <div class="col-xss-12 col-xs-4">
-          <a href="{{url('/blog/'.$children->blog_id.'/'.$children->blog_slug)}}" class="read-more">Ardın oxu <i class="ti-arrow-circle-right"></i></a>
+          <a href="{{url('/xeber/'.$children->blog_id.'/'.$children->blog_slug)}}" class="read-more">Ardın oxu <i class="ti-arrow-circle-right"></i></a>
         </div>
       </div>
     </div>
