@@ -23,14 +23,32 @@ class Tender extends Model
       'tender_created_by_id',
       'tender_deadline',
   ];
+      protected $primaryKey = 'tender_id';
 
 
+      public function category(){
 
-      // public function category(){
-      //
-      //       return $this->hasMany(Categories::class, 'tender_category_id');
-      //
-      // }
+            return $this->belongsTo('App\Categories', 'tender_category_id','cat_id');
+
+      }
+
+      public function username(){
+
+            return $this->belongsTo(User::class, 'tender_created_by_id');
+
+      }
+
+      public function person(){
+
+            return $this->belongsTo(Persons::class, 'tender_created_by_id');
+
+      }
+
+      public function company(){
+
+            return $this->belongsTo(Companies::class, 'tender_created_by_id');
+
+      }
 
 
 }

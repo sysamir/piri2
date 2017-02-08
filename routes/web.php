@@ -37,6 +37,16 @@ Route::group(['prefix' => 'dash', 'middleware' => 'auth'], function () {
     Route::resource('/kateqoriya','admin\CategoriesController');
     Route::get('/', function () {return view('admin.index');});
     Route::resource('/istifadechiler','admin\UsersController');
+    Route::get('/tenders', [
+        'as' => 'tenders',
+        'uses' => 'admin\TenderController@index'
+    ]);
+
+
+    Route::post('/tenders-delete', [
+        'as' => 'tendersDelete',
+        'uses' => 'admin\TenderController@destroy'
+    ]);
 
     //blog
     Route::resource('/blog-categories','admin\BlogCategoriesController');

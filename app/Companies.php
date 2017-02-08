@@ -13,4 +13,6 @@ class Companies extends Model
       'c_confirmed',
       'c_user_id',
   ];
+
+  protected $primaryKey = 'c_id';
 }
