@@ -91,7 +91,6 @@ class CategoriesController extends Controller
     {
       $this->validate($request, [
         'cat_name' => 'required',
-        'cat_parent' => 'required'
       ]);
 
       $cat = Categories::where('cat_id', $id)->first();

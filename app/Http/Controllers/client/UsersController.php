@@ -153,34 +153,47 @@ class UsersController extends Controller
     public function personEdit()
     {
       $id = Auth::user()->id;
-      $uProfile =  User::with('person')->findOrFail($id);
-      return view('client.uProfile.edit',compact('uProfile'));
+      if(Auth::user()->user_role == '0'){
+        // user profile edit
+        $uProfile =  User::with('person')->findOrFail($id);
+        return view('client.uProfile.edit',compact('uProfile'));
+      }elseif (Auth::user()->user_role == '1') {
+        //company profile edit
+
+      }
+
     }
 
     public function personUpdate(Request $request)
     {
-      $this->validate($request, [
-        'u_name' => 'required',
-        'u_birth' => 'required',
-        'u_phone' => 'required',
-        'u_gender' => 'required',
-
-      ]);
-
       $id = Auth::user()->id;
+      if(Auth::user()->user_role == '0'){
+        // user profile edit
+        $this->validate($request, [
+          'u_name' => 'required',
+          'u_birth' => 'required',
+          'u_phone' => 'required',
+          'u_gender' => 'required',
 
-      $person = Persons::where('u_user_id', $id)->first();
-      $person->u_name = $request['u_name'];
-      $person->u_birth = $request['u_birth'];
-      $person->u_phone = $request['u_phone'];
-      $person->u_gender = $request['u_gender'];
-      $person->save();
+        ]);
 
-      $user = User::findOrFail($id);
-      $user->user_status = '2';
-      $user->save();
+        $person = Persons::where('u_user_id', $id)->first();
+        $person->u_name = $request['u_name'];
+        $person->u_birth = $request['u_birth'];
+        $person->u_phone = $request['u_phone'];
+        $person->u_gender = $request['u_gender'];
+        $person->save();
 
-      Session::flash('mesaj', 'Təbriklər. Məlumatlar uğurla yeniləndi!');
-      return back();
+        $user = User::findOrFail($id);
+        $user->user_status = '2';
+        $user->save();
+
+        Session::flash('mesaj', 'Təbriklər. Məlumatlar uğurla yeniləndi!');
+        return back();
+
+      }elseif(Auth::user()->user_role == '1'){
+        // company profile edit
+
+      }
     }
 }

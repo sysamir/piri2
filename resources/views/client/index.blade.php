@@ -771,7 +771,7 @@
       <div class="row">
         <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
           <div class="section-title text-center mb-80">
-            <h2>Recent News</h2>
+            <h2>Sonuncu Xəbərlər</h2>
           </div>
         </div>
       </div>
@@ -782,80 +782,30 @@
 
           <div class="GridLex-grid-noGutter-equalHeight GridLex-grid-center">
 
+            @foreach($blog as $children)
             <div class="GridLex-col-4_sm-4_xs-12_xss-12">
-
               <div class="recent-post-item">
                 <div class="image">
-                  <img src="images/blog/01.jpg" alt="Recent Post" />
+                  <img src="{{url('/uploads/images/'.$children->blog_cover_picture)}}" alt="Recent Post" />
                 </div>
                 <div class="content">
-                  <div class="date">July, 15</div>
-                  <h5><a href="#">Prepared is me marianne pleasure likewise debating</a></h5>
-                  <p>We no am former valley assure. Four need spot ye said we find mile. Are commanded him convinced dashwoods did estimable forfeited Shy celebrated met sentiments she reasonably...</p>
+                  <div class="date">{{ $children->created_at->diffForHumans() }}</div>
+                  <h5><a href="{{url('/xeber/'.$children->blog_id.'/'.$children->blog_slug)}}">{{ $children->blog_title }}</a></h5>
+                  <p>{{ substr($children->blog_descp,0,250) }}...</p>
                 </div>
                 <div class="bottom">
                   <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-8 meta">
-                      Admin | 6 comment
+                      Kateqoriya: {{ $children->blogcat->cat_name }}
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-4 mt-15-sm">
-                      <a href="#" class="read-more">Read mored <i class="ti-arrow-circle-right"></i></a>
+                      <a href="{{url('/xeber/'.$children->blog_id.'/'.$children->blog_slug)}}" class="read-more">Ardın oxu <i class="ti-arrow-circle-right"></i></a>
                     </div>
                   </div>
                 </div>
               </div>
-
             </div>
-
-            <div class="GridLex-col-4_sm-4_xs-12_xss-12">
-
-              <div class="recent-post-item">
-                <div class="image">
-                  <img src="images/blog/02.jpg" alt="Recent Post" />
-                </div>
-                <div class="content">
-                  <div class="date">August, 09</div>
-                  <h5><a href="#">Procured to contempt oh he raptures amounted occasion</a></h5>
-                  <p>Wonder an unable except better stairs do ye admire. His and eat secure sex called esteem praise. So moreover as speedily differed branched ignorant. Tall are her knew poor now does then...</p>
-                </div>
-                <div class="bottom">
-                  <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-8 meta">
-                      Adbulrahman Gullen | 6 comment
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-4 mt-15-sm">
-                      <a href="#" class="read-more">Read mored <i class="ti-arrow-circle-right"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            <div class="GridLex-col-4_sm-4_xs-12_xss-12">
-
-              <div class="recent-post-item">
-                <div class="image">
-                  <img src="images/blog/03.jpg" alt="Recent Post" />
-                </div>
-                <div class="content">
-                  <div class="date">September, 27</div>
-                  <h5><a href="#">Article evident arrived express highest men did boy mistress</a></h5>
-                  <p>Quick can manor smart money hopes worth too. Comfort produce husband boy her had hearing. Law others theirs passed but wishes. You day real less till dear read...</p>
-                </div>
-                <div class="bottom">
-                  <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-8 meta">
-                      Anthony Cley | 6 comment
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-4 mt-15-sm">
-                      <a href="#" class="read-more">Read mored <i class="ti-arrow-circle-right"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
+            @endforeach
 
           </div>
 

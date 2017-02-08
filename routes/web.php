@@ -14,17 +14,12 @@
 Auth::routes();
 
 //clientside
-Route::get('/', function () {
-    return view('client.index');
-});
+Route::get('/','HomeController@index');
 Route::get('/home', function () {
     return  Redirect::to('/profile');
 });
 Route::post('/adduser','client\UsersController@addUser');
-Route::get('/profile','client\UsersController@profile');
-Route::post('/profile','client\UsersController@companyCreate');
-Route::get('/profile-edit','client\UsersController@personEdit');
-Route::post('/profile-update','client\UsersController@personUpdate');
+
 
 //registeration mail verification
 Route::get('register/verify/{confirmationCode}', [
@@ -52,19 +47,38 @@ Route::group(['prefix' => 'dash', 'middleware' => 'auth'], function () {
     Route::resource('/blog-categories','admin\BlogCategoriesController');
     Route::resource('/blog-news','admin\BlogNewsController');
     Route::get('/blog-newsearch/search',['uses' => 'admin\BlogNewsController@getSearch','as' => 'search']);
+
+    Route::get('/settings','admin\SettingsController@index');
+    Route::post('/settings','admin\SettingsController@save');
 });
 
 // client side for logged in users
 Route::group(['middleware' => 'auth'], function () {
-
   Route::resource('/tender','client\TenderController');
-  Route::get('/xeberler', [
-      'as' => 'xeberler',
-      'uses' => 'client\BlogController@index'
-  ]);
-  Route::get('/xeber/{id}/{slug}','client\BlogController@post');
 
+  Route::get('/profile','client\UsersController@profile');
+  Route::post('/profile','client\UsersController@companyCreate');
+  Route::get('/profile-edit','client\UsersController@personEdit');
+  Route::post('/profile-update','client\UsersController@personUpdate');
 });
+
+//xeberler
+Route::get('/xeberler', [
+    'as' => 'xeberler',
+    'uses' => 'client\BlogController@index'
+]);
+Route::get('/xeber/{id}/{slug}','client\BlogController@post');
+Route::get('/xeber/axtar','client\BlogController@search');
+Route::get('/xeberler/kateqoriya/{id}/{slug}','client\BlogController@category');
+
+Route::get('/elaqe', [
+    'as' => 'elaqe',
+    'uses' => 'client\ContactController@index'
+]);
+Route::post('/elaqe', [
+    'as' => 'mail',
+    'uses' => 'client\ContactController@mail'
+]);
 
 
 //clientside load modals

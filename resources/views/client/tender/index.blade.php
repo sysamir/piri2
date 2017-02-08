@@ -1,1 +1,2 @@
-asas
+@section('title', 'Tenderlərim')
+cecede

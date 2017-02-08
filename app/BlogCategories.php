@@ -25,4 +25,6 @@ class BlogCategories extends Model
    {
        return $this->hasMany(BlogCategories::class, 'cat_parent');
    }
+
+
 }

@@ -7,18 +7,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Title Of Site -->
-	<title>GoTender.Az</title>
-	<meta name="description" content="" />
-	<meta name="keywords" content="" />
-	<meta name="author" content="">
+	<title>@yield('title') {{config('app.title')}}</title>
+	<meta name="description" content="{{config('app.desc')}}" />
+	<meta name="keywords" content="{{config('app.keywords')}}" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<!-- Fav and Touch Icons -->
-	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
-	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
-	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
-	<link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
-	<link rel="shortcut icon" href="/client/images/ico/favicon.png">
 
 	<!-- CSS Cores and Plugins -->
 	<link rel="stylesheet" type="text/css" href="/client/bootstrap/css/bootstrap.min.css" media="screen">
@@ -82,17 +75,11 @@
 							<div class="col-sm-6 clearfix hidden-xs">
 
 								<div class="top-header-widget pull-right">
-									<a href="#">
-										 Kömək
-									</a>
-
+									<a style="padding: 5px" href="{{config('app.facebook')}}"><i class="fa-lg fa fa-facebook-official"></i></a>
+									<a style="padding: 5px" href="{{config('app.twitter')}}"><i class="fa-lg fa fa-twitter"></i></a>
+									<a style="padding: 5px" href="{{config('app.instagram')}}"><i class="fa-lg fa fa-instagram"></i></a>
 								</div>
-								<div class="top-header-widget pull-right">
-									<a href="#">
-										 Reklam
-									</a>
 
-								</div>
 
 
 
@@ -121,7 +108,7 @@
 							<li><a href="{{route('tender.create')}}">Tender Yarat</a></li>
 							<li><a href="">Reytinq</a></li>
 							<li><a href="{{route('xeberler')}}">Xəbərlər</a></li>
-							<li><a href="">Əlaqə</a></li>
+							<li><a href="{{route('elaqe')}}">Əlaqə</a></li>
 						</ul>
 
 					</div><!--/.nav-collapse -->
@@ -139,124 +126,7 @@
 
 		<div class="footer-wrapper scrollspy-footer">
 
-			<footer class="main-footer">
 
-				<div class="container footer-newsletter">
-
-					<div class="inner">
-
-						<div class="row">
-
-							<div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1">
-
-								<div class="row gap-15">
-
-									<div class="col-xs-12 col-sm-4 col-md-3">
-										<h4>Taladrod Newsletter</h4>
-									</div>
-
-									<div class="col-xss-12 col-xs-7 col-sm-5 col-md-6">
-										<div class="form-group">
-											<input type="text" class="form-control" placeholder="Enter your email subscribe">
-
-										</div>
-									</div>
-
-									<div class="col-xss-12 col-xs-5 col-sm-3 col-md-3">
-										<input type="submit" class="btn btn-submit btn-primary btn-block" value="Subscribe">
-									</div>
-
-								</div>
-
-							</div>
-
-						</div>
-
-					</div>
-
-				</div>
-
-				<div class="container">
-
-					<div class="row">
-
-						<div class="col-xs-12 col-sm-12 col-md-3 mb-30-sm">
-
-							<div class="footer-logo">
-								<a href="#home"><strong class="text-primary">TALAD</strong>Rod</a>
-							</div>
-
-							<p class="about-us-footer">Abilities or he perfectly pretended so strangers be exquisite. Oh to another chamber pleased imagine do in. Went me rank at... <a href="#" class="font-italic">read more</a></p>
-
-							<div class="social-footer clearfix">
-								<a href="#"><i class="fa fa-facebook-official"></i></a>
-								<a href="#"><i class="fa fa-twitter"></i></a>
-								<a href="#"><i class="fa fa-google-plus "></i></a>
-								<a href="#"><i class="fa fa-codepen"></i></a>
-								<a href="#"><i class="fa fa-behance"></i></a>
-								<a href="#"><i class="fa fa-github"></i></a>
-								<a href="#"><i class="fa fa-jsfiddle"></i></a>
-							</div>
-
-						</div>
-
-						<div class="col-xs-12 col-sm-12 col-md-3 mb-30-sm">
-
-							<h4 class="footer-title">Quick Menu</h4>
-
-							<ul class="menu-footer">
-								<li><a href="#">About Us</a></li>
-								<li><a href="#">Partners</a></li>
-								<li><a href="#">Terms</a></li>
-								<li><a href="#">Privacy Policy</a></li>
-								<li><a href="#">FAQ</a></li>
-								<li><a href="#">FAQ</a></li>
-								<li><a href="#">Press</a></li>
-								<li><a href="#">Contact</a></li>
-							</ul>
-
-						</div>
-
-						<div class="sm-clear"></div>
-
-						<div class="col-xs-12 col-sm-12 col-md-3  mb-30-sm">
-
-							<h4 class="footer-title">Office Hours</h4>
-
-							<ul class="office-hour">
-								<li >
-									Monday - Friday
-									<span>08:00 - 19:00</span>
-								</li>
-								<li >
-									Saturday
-									<span>08:00 - 14:30</span>
-								</li>
-								<li class="text-primary">
-									Sunday
-									<span>Closed</span>
-								</li>
-							</ul>
-
-
-
-						</div>
-
-						<div class="col-sm-12 col-md-3">
-
-							<h4 class="footer-title">Address</h4>
-							<p class="footer-address">11/87, Santisuk Road, T. Sabarang, A.Muang, Pattani 94000 <br /><span class="block text-white font20 font700 line20 mt-10 mb-5">+66 74 665 855</span>support@taladrod.com</p>
-
-						</div>
-
-					</div>
-
-				</div>
-
-
-
-
-			</footer>
 
 			<footer class="secondary-footer">
 
@@ -268,13 +138,7 @@
 							<p class="copy-right">&#169; Copyright 2016 TALADRod - Responsive Template.</p>
 						</div>
 
-						<div class="col-sm-6">
-							<ul class="secondary-footer-menu clearfix">
-								<li><a href="#">My Account</a></li>
-								<li><a href="#">Sign-in</a></li>
-								<li><a href="#">Sign-up</a></li>
-							</ul>
-						</div>
+
 
 					</div>
 
@@ -325,6 +189,8 @@
 <script type="text/javascript" src="/client/js/bootstrap-modalmanager.js"></script>
 <script type="text/javascript" src="/client/js/bootstrap-modal.js"></script>
 <script type="text/javascript" src="/client/js/customs.js"></script>
+
+
 
 @if(Session::has('mesaj'))
 <div id="sexyModal" class="modal fade login-box-wrapper" data-width="500" data-backdrop="static" data-keyboard="false" tabindex="-1" style="display: none;">

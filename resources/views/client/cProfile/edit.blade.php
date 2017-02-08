@@ -1,3 +1,4 @@
+@section('title', 'Şirkət hesabının redaktəsi')
 @extends('client.layouts.client')
 
 
