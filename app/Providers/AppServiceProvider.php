@@ -15,6 +15,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
+      // Cache::forget('settings');
       if (Cache::has('settings')) {
         $settings = Cache::get('settings');
       }else{
@@ -22,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
             return Settings::all();
           });
       }
-        
+
         config(['app.title' => $settings[0]['title']]);
         config(['app.desc' => $settings[0]['desc']]);
         config(['app.keywords' => $settings[0]['keywords']]);

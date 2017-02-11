@@ -40,11 +40,11 @@
 
       <div class="text-holder">
         <div class="icon hexagon">
-          <i class="fa fa-car"></i>
+          <i class="fa fa-search"></i>
         </div>
         <div class="text-content">
-          <span class="uppercase">Looking for Vehicle</span>
-          Find your best vehicle is easy
+          <span class="uppercase">Tender</span>
+          Axtar
         </div>
       </div>
 
@@ -124,7 +124,7 @@
         </div>
         <div class="holder-item mb-20">
 
-          <a href="#" class="btn btn-block">Search</a>
+          <a href="#" class="btn btn-block">AXTAR</a>
 
         </div>
 

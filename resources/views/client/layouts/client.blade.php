@@ -104,7 +104,7 @@
 						<ul class="nav navbar-nav" id="responsive-menu">
 							<li><a style="" href="/"><i  class="fa fa-home fa-1x"></i></a></li>
 							<li><a href="">Bu necə işləyir?</a></li>
-							<li><a href="">Tenderlər</a></li>
+							<li><a href="/tenderler">Tenderlər</a></li>
 							<li><a href="{{route('tender.create')}}">Tender Yarat</a></li>
 							<li><a href="">Reytinq</a></li>
 							<li><a href="{{route('xeberler')}}">Xəbərlər</a></li>

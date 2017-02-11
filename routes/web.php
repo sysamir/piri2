@@ -13,6 +13,11 @@
 
 Auth::routes();
 
+
+//search
+
+Route::get('/search','client\TenderlerController@search');
+
 //clientside
 Route::get('/','HomeController@index');
 Route::get('/home', function () {
@@ -42,6 +47,9 @@ Route::group(['prefix' => 'dash', 'middleware' => 'auth'], function () {
         'as' => 'tendersDelete',
         'uses' => 'admin\TenderController@destroy'
     ]);
+
+    Route::get('/tenders/{id}/edit','admin\TenderController@edit');
+    Route::post('/tenders/{id}','admin\TenderController@update');
 
     //blog
     Route::resource('/blog-categories','admin\BlogCategoriesController');
@@ -79,6 +87,9 @@ Route::post('/elaqe', [
     'as' => 'mail',
     'uses' => 'client\ContactController@mail'
 ]);
+
+Route::get('/tenderler','client\TenderlerController@tenders');
+Route::get('/tenderler/{id}/{slug}','client\TenderlerController@tenderSlug');
 
 
 //clientside load modals

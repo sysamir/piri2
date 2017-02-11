@@ -65,13 +65,13 @@
                                         @endif
 
                                       </td>
+
                                       <td>{{$ten->created_at}}</td>
 
                                         <td>  <div class="">
-                                            <a href="" onclick="event.preventDefault(); document.getElementById('delete{{$ten->tender_id}}').submit();" class="btn btn-primary">Sil</a>
+                                            <a href="" onclick="event.preventDefault(); document.getElementById('delete{{$ten->tender_id}}').submit();" class="btn btn-danger">Sil</a>
+                                            <a href="/dash/tenders/{{$ten->tender_id}}/edit" class="btn btn-primary">Redaktə</a>
                                           </div></td>
-
-
 
                                     </tr>
 
