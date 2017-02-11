@@ -281,6 +281,13 @@
                     </li>
 
                     <li>
+                        <a href="{{ route('tenders') }}">
+                            <i class="material-icons">whatshot</i>
+                            <span>Tenderlər</span>
+                        </a>
+                    </li>
+
+                    <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">web</i>
                             <span>Bloq</span>
@@ -300,6 +307,9 @@
                             <span>Nizamlamalar</span>
                         </a>
                     </li>
+
+
+
 
 
 

@@ -19,4 +19,5 @@ class Companies extends Model
   public function categories(){
     return $this->belongsToMany('App\Categories', 'cc_relations', 'cc_company_id', 'cc_cat_id');
   }
+
 }
