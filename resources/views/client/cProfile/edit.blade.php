@@ -44,7 +44,7 @@
 
 									</div>
 
-									<form id="contact-form" action="/profile" method="POST" enctype="multipart/form-data">
+									<form id="contact-form" action="/profile-update" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
 
 										<div class="messages"></div>
@@ -56,7 +56,7 @@
 												<div class="col-xs-6 col-sm-6">
 													<div class="form-group">
 														<label for="form_name">Şirkətin adı </label>
-														<input id="form_name" type="text" name="c_name" class="form-control" placeholder="şirkətin adın daxil edin *" required="required" >
+														<input value="{{$cProfile->company->c_name}}" id="form_name" type="text" name="c_name" class="form-control" placeholder="şirkətin adın daxil edin *" required="required" >
 														<div class="help-block with-errors"></div>
 													</div>
 												</div>
@@ -64,7 +64,7 @@
 												<div class="col-xs-6 col-sm-6">
 													<div class="form-group">
 														<label for="form_email">Vöen </label>
-														<input id="form_email" type="text" name="c_voen" class="form-control" placeholder="vöen -i daxil edin *" >
+														<input value="{{$cProfile->company->c_voen}}" disabled id="form_email" type="text" name="c_voen" class="form-control" placeholder="vöen -i daxil edin *" >
 														<div class="help-block with-errors"></div>
 													</div>
 												</div>
@@ -72,7 +72,7 @@
 												<div class="col-xs-6 col-sm-6">
 													<div class="form-group">
 														<label>Telefon nömrəsi</label>
-														<input id="form_lastname" type="text" name="c_number" class="form-control" placeholder="şirkətə aid bir telefon nomrəsi *" required="required" >
+														<input value="{{$cProfile->company->c_number}}" id="form_lastname" type="text" name="c_number" class="form-control" placeholder="şirkətə aid bir telefon nomrəsi *" required="required" >
 														<div class="help-block with-errors"></div>
 													</div>
 												</div>
@@ -80,24 +80,25 @@
                         <div class="col-xs-6 col-sm-6">
 													<div class="form-group">
 														<label>E-Poçt ünvanı</label>
-														<input id="form_lastname" type="text" name="c_official_mail" class="form-control" placeholder="şirkətin rəsimi e-poçt ünvanı *" required="required" >
+														<input value="{{$cProfile->company->c_official_mail}}" id="form_lastname" type="text" name="c_official_mail" class="form-control" placeholder="şirkətin rəsimi e-poçt ünvanı *" required="required" >
 														<div class="help-block with-errors"></div>
 													</div>
 												</div>
 
 												<div class="col-xs-12 col-sm-12">
 													<div class="form-group">
-														<label for="form_message">Şirkət haqqında   </label>
-														<textarea id="form_message" name="c_desc" class="form-control" placeholder="Şirhət haqqında məlumat mətni *" rows="8" required="required" ></textarea>
+														<label for="form_message">Şirkət haqqında</label>
+														<textarea id="form_message" name="c_desc" class="form-control" placeholder="Şirhət haqqında məlumat mətni *" rows="8" required="required" >{{$cProfile->company->c_desc}}</textarea>
 														<div class="help-block with-errors"></div>
 													</div>
 												</div>
 
-                        <div class="col-xs-6 col-sm-6">
+                        <div class="col-xs-3 col-sm-3">
 													<div class="form-group">
 														<label>Şirkətin loqosu</label>
-														<input id="form_lastname" type="file" name="image" class="form-control"  required="required" >
+														<input id="form_lastname" type="file" name="image" class="form-control"  >
 														<div class="help-block with-errors"></div>
+														<img class="img-responsive" style="max-height: 150px" src="/uploads/images/{{$cProfile->company->c_logo_image}}" alt="Şirkətin loqosu" title="Şirkətin loqosu" />
 													</div>
 												</div>
 
