@@ -84,11 +84,7 @@ class TenderController extends Controller
       ]);
 
 
-
-
-
-
-      return redirect()->route('tender-yarat.index');
+      return redirect()->to('/profile');
     }
 
     /**
