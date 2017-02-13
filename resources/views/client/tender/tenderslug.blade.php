@@ -136,10 +136,6 @@
 
 								<p>{{$Slug->tender_desc}}</p>
 
-
-
-
-
 							</div>
 
 						</div>
@@ -153,88 +149,69 @@
 									<div class="col-xss-12 col-xs-6 col-sm-12 col-md-12 mb-30-xss">
 
 										<div class="result-filter-wrapper">
-											<h3>Make a New Search</h3>
+											<h3>AXTARIŞ</h3>
 											<div class="content">
-												<form class="form-holder">
-													<div class="holder-item mb-20">
+												<form class="form-holder" method="GET" action="/search">
 
-														<div class="fancy-select"><select class="custom-select fancified" id="car-search-maker" style="width: 1px; height: 1px; display: block; position: absolute; top: 0px; left: 0px; opacity: 0;">
-															<option value="0">Maker</option>
-															<option value="1">Audi</option>
-															<option value="2">BMW</option>
-															<option value="2">Nissan</option>
-															<option value="3">Toyota</option>
-															<option value="4">Honda</option>
-															<option value="5">Saab</option>
-															<option value="6">Volvo</option>
-															<option value="7">Mazda</option>
-															<option value="8">Mini</option>
-															<option value="9">Mercedes-Benz</option>
-															<option value="10">Lotus</option>
-															<option value="11">Fiat</option>
-															<option value="12">Lexus</option>
-															<option value="13">Subaru</option>
-															<option value="14">Jaguar</option>
-															<option value="15">Land Rover</option>
-															<option value="16">Isuzu</option>
-														</select><div class="form-control">Maker</div><ul class="options"><li data-raw-value="0" class="selected">Maker</li><li data-raw-value="1">Audi</li><li data-raw-value="2">BMW</li><li data-raw-value="2">Nissan</li><li data-raw-value="3">Toyota</li><li data-raw-value="4">Honda</li><li data-raw-value="5">Saab</li><li data-raw-value="6">Volvo</li><li data-raw-value="7">Mazda</li><li data-raw-value="8">Mini</li><li data-raw-value="9">Mercedes-Benz</li><li data-raw-value="10">Lotus</li><li data-raw-value="11">Fiat</li><li data-raw-value="12">Lexus</li><li data-raw-value="13">Subaru</li><li data-raw-value="14">Jaguar</li><li data-raw-value="15">Land Rover</li><li data-raw-value="16">Isuzu</li></ul></div>
+									        <div class="holder-item mb-20">
 
-													</div>
-													<div class="holder-item mb-20">
+									          <select name="searchBy" class="custom-select" id="car-search-maker">
+									            <option value="0">Kateqoriya</option>
+									            @foreach($tenderCATE as $tenS)
+									            <option value="{{$tenS->cat_id}}">{{$tenS->cat_name}}  </option>
+									                @foreach($tenS->children as $ten)
+									              <option value="{{$ten->cat_id}}">-{{$ten->cat_name}}</option>
+									              @foreach($ten->children as $te)
+									                <option value="{{$te->cat_id}}">--{{$te->cat_name}}</option>
+									                    @endforeach
+									                    @endforeach
 
-														<div class="fancy-select"><select class="custom-select fancified" id="car-search-model" style="width: 1px; height: 1px; display: block; position: absolute; top: 0px; left: 0px; opacity: 0;">
-															<option value="0">Model</option>
-															<option value="1">Series 1</option>
-															<option value="2">Series 2</option>
-															<option value="2">Series 3</option>
-															<option value="3">Series 4</option>
-															<option value="4">Series 5</option>
-															<option value="5">Series 6</option>
-															<option value="6">Series 7</option>
-															<option value="7">X 1</option>
-															<option value="8">X 3</option>
-															<option value="9">X 5</option>
-															<option value="10">Z 4</option>
-														</select><div class="form-control">Model</div><ul class="options"><li data-raw-value="0" class="selected">Model</li><li data-raw-value="1">Series 1</li><li data-raw-value="2">Series 2</li><li data-raw-value="2">Series 3</li><li data-raw-value="3">Series 4</li><li data-raw-value="4">Series 5</li><li data-raw-value="5">Series 6</li><li data-raw-value="6">Series 7</li><li data-raw-value="7">X 1</li><li data-raw-value="8">X 3</li><li data-raw-value="9">X 5</li><li data-raw-value="10">Z 4</li></ul></div>
+									            @endforeach
 
-													</div>
-													<div class="holder-item mb-20">
+									          </select>
 
-														<div class="fancy-select"><select class="custom-select fancified" id="car-search-year" style="width: 1px; height: 1px; display: block; position: absolute; top: 0px; left: 0px; opacity: 0;">
-															<option value="0">Year</option>
-															<option value="1">2000</option>
-															<option value="2">2001</option>
-															<option value="2">2002</option>
-															<option value="3">2003</option>
-															<option value="4">2004</option>
-															<option value="5">2005</option>
-															<option value="6">2006</option>
-															<option value="7">2007</option>
-															<option value="8">2008</option>
-															<option value="9">2009</option>
-															<option value="10">2010</option>
-														</select><div class="form-control">Year</div><ul class="options"><li data-raw-value="0" class="selected">Year</li><li data-raw-value="1">2000</li><li data-raw-value="2">2001</li><li data-raw-value="2">2002</li><li data-raw-value="3">2003</li><li data-raw-value="4">2004</li><li data-raw-value="5">2005</li><li data-raw-value="6">2006</li><li data-raw-value="7">2007</li><li data-raw-value="8">2008</li><li data-raw-value="9">2009</li><li data-raw-value="10">2010</li></ul></div>
+									        </div>
 
-													</div>
-													<div class="holder-item mb-20">
+									  <div class="holder-item mb-20" >
+									        <input type="number" class="form-control" name="min" placeholder="Minumum Qiymət" value="">
 
-														<div class="fancy-select"><select class="custom-select fancified" id="car-search-price" style="width: 1px; height: 1px; display: block; position: absolute; top: 0px; left: 0px; opacity: 0;">
-															<option value="0">Price</option>
-															<option value="1">Less than 30k</option>
-															<option value="2">31k-50k</option>
-															<option value="3">51k-70k</option>
-															<option value="4">71k-90k</option>
-															<option value="5">Greater Than 90k</option>
-														</select><div class="form-control">Price</div><ul class="options"><li data-raw-value="0" class="selected">Price</li><li data-raw-value="1">Less than 30k</li><li data-raw-value="2">31k-50k</li><li data-raw-value="3">51k-70k</li><li data-raw-value="4">71k-90k</li><li data-raw-value="5">Greater Than 90k</li></ul></div>
+									</div>
 
-													</div>
-													<div class="holder-item">
+									<div class="holder-item mb-20" >
+												<input type="number" class="form-control" name="maks" placeholder="Maksimum Qiymət" value="">
 
-														<a href="#" class="btn btn-block">Search</a>
+								</div>
+									        <div class="holder-item mb-20">
+									          <select name="valyutaSlug" class="custom-select" id="car-search-year">
 
-													</div>
+									            <option value="azn">AZN</option>
+									            <option value="dollar">DOLLAR</option>
 
-												</form>
+									          </select>
+
+									        </div>
+									        <div class="holder-item mb-20">
+
+									        <input type="date" data-date-format="YYYY MMMM DD"  class="form-control" name="vaxt" placeholder="" value="">
+
+									        </div>
+
+									        <script type="text/javascript">
+									        $("#dateYnei").on("change", function() {
+									            this.setAttribute(
+									                "data-date",
+									                moment(this.value, "DD-MM-YYYY")
+									                .format( this.getAttribute("data-date-format") )
+									            )
+									          }).trigger("change")
+									        </script>
+									        <div class="holder-item mb-20">
+
+									          <button type="submit" href="#" class="btn btn-block" style="color: black;">AXTAR</button>
+
+									        </div>
+
+									      </form>
 											</div>
 										</div>
 
@@ -249,13 +226,6 @@
 						</div>
 
 					</div>
-
-
-
-
-
-
-
 
 							</div>
 

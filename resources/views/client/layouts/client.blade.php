@@ -25,6 +25,9 @@
 	<!-- Your Own Style -->
 	<link href="/client/css/your-style.css" rel="stylesheet">
 
+	<script type="text/javascript" src="/client/js/jquery-2.2.4.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -176,7 +179,7 @@
 </script>
 
 <!-- JS Global -->
-<script type="text/javascript" src="/client/js/jquery-2.2.4.min.js"></script>
+
 <script type="text/javascript" src="/client/js/jquery-migrate-1.4.1.min.js"></script>
 <script type="text/javascript" src="/client/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/client/js/jquery.waypoints.min.js"></script>

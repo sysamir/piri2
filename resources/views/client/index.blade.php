@@ -48,83 +48,58 @@
         </div>
       </div>
 
-      <form class="form-holder">
+      <form class="form-holder" method="GET" action="/search">
 
         <div class="holder-item mb-20">
 
-          <select class="custom-select" id="car-search-maker">
-            <option value="0">Maker</option>
-            <option value="1">Audi</option>
-            <option value="2">BMW</option>
-            <option value="2">Nissan</option>
-            <option value="3">Toyota</option>
-            <option value="4">Honda</option>
-            <option value="5">Saab</option>
-            <option value="6">Volvo</option>
-            <option value="7">Mazda</option>
-            <option value="8">Mini</option>
-            <option value="9">Mercedes-Benz</option>
-            <option value="10">Lotus</option>
-            <option value="11">Fiat</option>
-            <option value="12">Lexus</option>
-            <option value="13">Subaru</option>
-            <option value="14">Jaguar</option>
-            <option value="15">Land Rover</option>
-            <option value="16">Isuzu</option>
+          <select name="searchBy" class="custom-select" id="car-search-maker">
+            <option value="0">Kateqoriya</option>
+            @foreach($tenderCATE as $tenS)
+            <option value="{{$tenS->cat_id}}">{{$tenS->cat_name}}  </option>
+                @foreach($tenS->children as $ten)
+              <option value="{{$ten->cat_id}}">-{{$ten->cat_name}}</option>
+              @foreach($ten->children as $te)
+                <option value="{{$te->cat_id}}">--{{$te->cat_name}}</option>
+                    @endforeach
+                    @endforeach
+
+            @endforeach
+
+          </select>
+
+        </div>
+
+  <div class="holder-item mb-20" style="width:14%;">
+        <input type="number" class="form-control" name="qiymet" placeholder="Qiymət" value="">
+
+</div>
+        <div class="holder-item mb-20" style="width:12%;">
+          <select name="valyuta" class="custom-select" id="car-search-year">
+
+            <option value="azn">AZN</option>
+            <option value="dollar">DOLLAR</option>
+
           </select>
 
         </div>
         <div class="holder-item mb-20">
 
-          <select class="custom-select" id="car-search-model">
-            <option value="0">Model</option>
-            <option value="1">Series 1</option>
-            <option value="2">Series 2</option>
-            <option value="2">Series 3</option>
-            <option value="3">Series 4</option>
-            <option value="4">Series 5</option>
-            <option value="5">Series 6</option>
-            <option value="6">Series 7</option>
-            <option value="7">X 1</option>
-            <option value="8">X 3</option>
-            <option value="9">X 5</option>
-            <option value="10">Z 4</option>
-          </select>
+        <input type="date"   class="form-control" name="vaxt" placeholder="" value="">
 
         </div>
+
+        <script type="text/javascript">
+        $("#dateYnei").on("change", function() {
+            this.setAttribute(
+                "data-date",
+                moment(this.value, "DD-MM-YYYY")
+                .format( this.getAttribute("data-date-format") )
+            )
+          }).trigger("change")
+        </script>
         <div class="holder-item mb-20">
 
-          <select class="custom-select" id="car-search-year">
-            <option value="0">Year</option>
-            <option value="1">2000</option>
-            <option value="2">2001</option>
-            <option value="2">2002</option>
-            <option value="3">2003</option>
-            <option value="4">2004</option>
-            <option value="5">2005</option>
-            <option value="6">2006</option>
-            <option value="7">2007</option>
-            <option value="8">2008</option>
-            <option value="9">2009</option>
-            <option value="10">2010</option>
-          </select>
-
-        </div>
-        <div class="holder-item mb-20">
-
-          <select class="custom-select" id="car-search-price">
-            <option value="0">Price</option>
-            <option value="1">Less than 30k</option>
-            <option value="2">31k-50k</option>
-            <option value="3">51k-70k</option>
-            <option value="4">71k-90k</option>
-            <option value="5">Greater Than 90k</option>
-          </select>
-
-        </div>
-        <div class="holder-item mb-20">
-
-          <a href="#" class="btn btn-block">AXTAR</a>
+          <button type="submit" href="#" class="btn btn-block" style="color: black;">AXTAR</button>
 
         </div>
 
