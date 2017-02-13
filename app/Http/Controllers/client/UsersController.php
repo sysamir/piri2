@@ -11,6 +11,7 @@ use App\Companies;
 use Illuminate\Support\Facades\Redirect;
 use Auth;
 use Storage;
+use File;
 use App\Persons;
 
 class UsersController extends Controller
@@ -127,7 +128,7 @@ class UsersController extends Controller
 
         if ( ! $comp)
         {
-          $path = $request->file('image')->store('CompanieLogo');
+          $path = $request->file('image')->store('CompaniesLogo','public');
           Companies::create([
               'c_name' => $request['c_name'],
               'c_logo_image' => $path,
@@ -143,14 +144,12 @@ class UsersController extends Controller
           $user->save();
         }
 
-
-
         Session::flash('mesaj', 'Təbriklər şirkət məlumatları göndərildi! Yoxlanışdan sonra aktivləşdiriləcək.');
         return back();
 
     }
 
-    public function personEdit()
+    public function profileEdit()
     {
       $id = Auth::user()->id;
       if(Auth::user()->user_role == '0'){
@@ -159,12 +158,13 @@ class UsersController extends Controller
         return view('client.uProfile.edit',compact('uProfile'));
       }elseif (Auth::user()->user_role == '1') {
         //company profile edit
-
+        $cProfile =  User::with('company')->findOrFail($id);
+        return view('client.cProfile.edit',compact('cProfile'));
       }
 
     }
 
-    public function personUpdate(Request $request)
+    public function profileUpdate(Request $request)
     {
       $id = Auth::user()->id;
       if(Auth::user()->user_role == '0'){
@@ -193,7 +193,37 @@ class UsersController extends Controller
 
       }elseif(Auth::user()->user_role == '1'){
         // company profile edit
+        $this->validate($request, [
+          'c_name' => 'required',
+          'c_number' => 'required',
+          'c_official_mail' => 'required',
+          'c_desc' => 'required',
+          'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
 
+        $c = Companies::where('c_user_id',$id)->first();
+        $c->c_name = $request['c_name'];
+        $c->c_number = $request['c_number'];
+        $c->c_official_mail = $request['c_official_mail'];
+        $c->c_desc = $request['c_desc'];
+
+        $del = public_path('uploads').'/images/'.$c->c_logo_image;
+
+        if ($request->file('image')) {
+          $path = $request->file('image')->store('CompaniesLogo','public');
+          File::delete($del);
+          $c->c_logo_image = $path;
+        }
+        $c->save();
+
+        Session::flash('mesaj', 'Təbriklər. Məlumatlar uğurla yeniləndi!');
+        return back();
       }
+    }
+
+    public function companyPage($id)
+    {
+      $company = Companies::with('categories')->where('c_id', $id)->where('c_confirmed', '1')->first();
+      return view('client.Pages.company',compact('company'));
     }
 }

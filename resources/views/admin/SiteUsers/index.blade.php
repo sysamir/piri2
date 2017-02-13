@@ -15,10 +15,6 @@
 
                         <div class="header">
                             <h2>Qeydiyaytlı istifadəçilər</h2>
-
-
-
-
                         </div>
                         <div class="body table-responsive">
                             <table class="table table-hover">
@@ -38,7 +34,15 @@
                                   @foreach($users as $user_val)
                                     <tr>
                                         <th scope="row">{{ $user_val->id }}</th>
-                                        <td>{{ $user_val->name }}</td>
+                                        <td>
+                                        @if($user_val->user_role == '0')
+                                        {{$user_val->person->u_name}}
+                                        @elseif($user_val->user_role == '1')
+                                        {{$user_val->company->c_name}}
+                                        @elseif($user_val->user_role == '2')
+                                        {{$user_val->person->u_name}}
+                                        @endif
+                                        </td>
 
                                         <td>
                                           @if($user_val->user_status == '2')
@@ -55,6 +59,11 @@
                                           <span class="label label-info"> istifadəçi </span>
                                           @elseif($user_val->user_role == '1')
                                           <span class="label label-warning"> şirkət </span>
+                                          @if($user_val->company->c_confirmed == 1)
+                                          <span class="label label-success"> təsdiqlənib </span>
+                                          @elseif($user_val->company->c_confirmed == 0)
+                                          <span class="label label-danger"> təsdiqlənməyib </span>
+                                          @endif
                                           @elseif($user_val->user_role == '2')
                                           <span class="label label-danger"> administrator </span>
                                           @endif

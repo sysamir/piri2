@@ -29,7 +29,8 @@ class BlogController extends Controller
     public function category($id)
     {
       $cat =  BlogCategories::with('parent','children')->whereNull('cat_parent')->orderBy('cat_id','desc')->get();
-      $blog = BlogNews::with('blogcat')->where('blog_cat_id', $id)->orderBy('blog_id','desc')->paginate(5);
+      $blogcat = BlogCategories::find($id)->news();
+      $blog = BlogNews::with('blogcat')->whereIn('blog_cat_id', $blogcat)->orderBy('blog_id','desc')->paginate(5);
       return view('client.Blog.index',compact('blog','cat'));
     }
 

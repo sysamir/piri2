@@ -4,6 +4,7 @@
 
 @section('blog')
 <div class="content-wrapper">
+@if(count($blog)>0)
 @foreach($blog as $children)
   <div class="classic-blog-item">
     <div class="image">
@@ -33,6 +34,9 @@
     </div>
   </div>
 @endforeach
+@else
+  <h3>Xəbər tapılmadı...</h3>
+@endif
 
   <div class="paging-wrapper clearfix">
     <nav class="pull-right">

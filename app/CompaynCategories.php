@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Companies extends Model
+class CompaynCategories extends Model
 {
   protected $fillable = [
       'c_id', 'c_name', 'c_logo_image','c_desc','c_voen',
@@ -15,9 +15,5 @@ class Companies extends Model
   ];
 
   protected $primaryKey = 'c_id';
-
-  public function categories(){
-    return $this->belongsToMany('App\Categories', 'cc_relations', 'cc_company_id', 'cc_cat_id');
-  }
-
+  protected $table = 'cc_relations';
 }

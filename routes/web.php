@@ -66,8 +66,8 @@ Route::group(['middleware' => 'auth'], function () {
 
   Route::get('/profile','client\UsersController@profile');
   Route::post('/profile','client\UsersController@companyCreate');
-  Route::get('/profile-edit','client\UsersController@personEdit');
-  Route::post('/profile-update','client\UsersController@personUpdate');
+  Route::get('/profile-edit','client\UsersController@profileEdit');
+  Route::post('/profile-update','client\UsersController@profileUpdate');
 });
 
 //xeberler
@@ -78,6 +78,8 @@ Route::get('/xeberler', [
 Route::get('/xeber/{id}/{slug}','client\BlogController@post');
 Route::get('/xeber/axtar','client\BlogController@search');
 Route::get('/xeberler/kateqoriya/{id}/{slug}','client\BlogController@category');
+
+Route::get('/shirket/{id}','client\UsersController@companyPage');
 
 Route::get('/elaqe', [
     'as' => 'elaqe',
