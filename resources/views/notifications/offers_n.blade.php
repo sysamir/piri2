@@ -1,0 +1,1 @@
+<li><i class="text-primary fa fa-check"></i><b>{!! $n->data['tender']['tender_name'] !!}</b> tenderinizə <b>{!! $n->data['offer']['c_name'] !!}</b> şirkətindən yeni təkif - <a href="/tenderler/{!! $n->data['tender']['tender_id'] !!}/{!! $n->data['tender']['tender_slug'] !!}">ətraflı</a></li>

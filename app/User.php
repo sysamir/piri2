@@ -28,10 +28,14 @@ class User extends Authenticatable
     ];
 
     public function company(){
-      return $this->hasOne('App\Companies', 'c_user_id', 'id');
+      return $this->hasOne('App\Companies', 'c_user_id', 'id')->with('categories');
     }
 
     public function person(){
       return $this->hasOne('App\Persons', 'u_user_id', 'id');
+    }
+
+    public function tender(){
+      return $this->hasMany('App\Tender', 'tender_created_by_id', 'id')->where('tender_status','1');
     }
 }

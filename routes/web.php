@@ -63,11 +63,17 @@ Route::group(['prefix' => 'dash', 'middleware' => 'auth'], function () {
 // client side for logged in users
 Route::group(['middleware' => 'auth'], function () {
   Route::resource('/tender','client\TenderController');
-
+  Route::post('/teklif-ver','client\TenderlerController@createOffer');
+  Route::get('/teklif-qebul/{tender}/{teklif}','client\TenderlerController@offerWinner');
   Route::get('/profile','client\UsersController@profile');
   Route::post('/profile','client\UsersController@companyCreate');
   Route::get('/profile-edit','client\UsersController@profileEdit');
   Route::post('/profile-update','client\UsersController@profileUpdate');
+  Route::get('/bildirishler','client\UsersController@userNotifications');
+  Route::get('/bildirishler-oxundu', function () {
+      Auth::user()->unreadNotifications->markAsRead();
+      return back();
+  });
 });
 
 //xeberler

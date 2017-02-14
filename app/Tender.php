@@ -3,15 +3,17 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Auth;
 
 class Tender extends Model
 {
+  
   protected $fillable = [
       'tender_id',
-       'tender_name',
-       'tender_slug',
-       'tender_desc',
-       'tender_image',
+      'tender_name',
+      'tender_slug',
+      'tender_desc',
+      'tender_image',
       'tender_status',
       'tender_address',
       'tender_mail',
@@ -50,5 +52,14 @@ class Tender extends Model
 
       }
 
+      public function offers(){
+
+            return $this->hasMany(Offers::class, 'offer_tender_id','tender_id')->with('user');
+
+      }
+
+      public function companies(){
+            return $this->hasMany(TenderCompanies::class, 'tc_tender_id','tender_id');
+      }
 
 }

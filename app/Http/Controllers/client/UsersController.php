@@ -13,6 +13,8 @@ use Auth;
 use Storage;
 use File;
 use App\Persons;
+use App\Categories;
+use App\CompaynCategories;
 
 class UsersController extends Controller
 {
@@ -89,18 +91,21 @@ class UsersController extends Controller
           $uProfile =  User::with('person')->findOrFail($id);
           return view('client.uProfile.index',compact('uProfile'));
         }else{
-          return 'Hesab deaktivdir!';
+          Session::flash('mesaj', 'Hesab deaktivdir!');
+          return back();
         }
 
       }elseif (Auth::user()->user_role == '1') {
         //shirket profili
         if (Auth::user()->user_status == '1') {
-          return view('client.cProfile.edit',compact(''));
+          $cat = Categories::with('parent','children')->whereNull('cat_parent')->orderBy('cat_id','desc')->get();
+          return view('client.cProfile.create',compact('cat'));
         }elseif(Auth::user()->user_status == '2') {
-          $cProfile =  User::with('company')->findOrFail($id);
+          $cProfile =  User::with('company','tender')->findOrFail($id);
           return view('client.cProfile.index',compact('cProfile'));
         }else{
-          return 'Hesab deaktivdir!';
+          Session::flash('mesaj', 'Hesab deaktivdir!');
+          return back();
         }
 
       }elseif (Auth::user()->user_role == '2') {
@@ -117,11 +122,12 @@ class UsersController extends Controller
           'c_desc' => 'required',
           'c_voen' => 'required',
           'c_number' => 'required',
+          'cat' => 'required',
           'c_official_mail' => 'required',
           'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-
+        // dd($request['cat']);
         $id = Auth::user()->id;
 
         $comp = Companies::where('c_user_id', $id)->first();
@@ -129,7 +135,7 @@ class UsersController extends Controller
         if ( ! $comp)
         {
           $path = $request->file('image')->store('CompaniesLogo','public');
-          Companies::create([
+          $comp = Companies::create([
               'c_name' => $request['c_name'],
               'c_logo_image' => $path,
               'c_desc' => $request['c_desc'],
@@ -137,8 +143,13 @@ class UsersController extends Controller
               'c_number' => $request['c_number'],
               'c_official_mail' => $request['c_official_mail'],
               'c_user_id' => $id
-          ]);
-
+          ])->c_id;
+          foreach ($request['cat'] as $cat) {
+            CompaynCategories::create([
+              'cc_cat_id' => $cat,
+              'cc_company_id' => $comp
+            ]);
+          }
           $user = User::findOrFail($id);
           $user->user_status = '2';
           $user->save();
@@ -158,8 +169,9 @@ class UsersController extends Controller
         return view('client.uProfile.edit',compact('uProfile'));
       }elseif (Auth::user()->user_role == '1') {
         //company profile edit
+        $cat = Categories::with('parent','children')->whereNull('cat_parent')->orderBy('cat_id','desc')->get();
         $cProfile =  User::with('company')->findOrFail($id);
-        return view('client.cProfile.edit',compact('cProfile'));
+        return view('client.cProfile.edit',compact('cProfile','cat'));
       }
 
     }
@@ -198,10 +210,11 @@ class UsersController extends Controller
           'c_number' => 'required',
           'c_official_mail' => 'required',
           'c_desc' => 'required',
+          'cc_cat_id' => 'required',
           'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $c = Companies::where('c_user_id',$id)->first();
+        $c = Companies::with('categories')->where('c_user_id',$id)->first();
         $c->c_name = $request['c_name'];
         $c->c_number = $request['c_number'];
         $c->c_official_mail = $request['c_official_mail'];
@@ -215,7 +228,7 @@ class UsersController extends Controller
           $c->c_logo_image = $path;
         }
         $c->save();
-
+        $c->categories()->sync($request['cc_cat_id']);
         Session::flash('mesaj', 'Təbriklər. Məlumatlar uğurla yeniləndi!');
         return back();
       }
@@ -225,5 +238,11 @@ class UsersController extends Controller
     {
       $company = Companies::with('categories')->where('c_id', $id)->where('c_confirmed', '1')->first();
       return view('client.Pages.company',compact('company'));
+    }
+
+    public function userNotifications()
+    {
+      $notifications = Auth::user()->unreadNotifications;
+      return view('client.Pages.notifications',compact('notifications'));
     }
 }

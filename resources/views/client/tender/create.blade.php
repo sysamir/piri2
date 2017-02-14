@@ -116,18 +116,31 @@
 													</div>
 												</div>
 
-
 												<div class="col-xs-6 col-sm-6">
-											<div class="form-group">
-												<label>Tenderin vəziyyəti</label>
-												<select class="form-control" name="tender_private">
-													<option style="display:none" value="">Seçin</option>
-													<option value="1">Açıq Tender</option>
-													<option value="0">Qapalı Tender</option>
-												</select>
-												<div class="help-block with-errors"></div>
+												<div class="form-group">
+													<label>Tenderin kateqroiyası</label>
+													<select class="form-control" name="tender_category_id">
+														<option style="display:none" value="">Seçin</option>
+														@foreach($category as $categor)
+														<option value="{{$categor->cat_id}}">{{$categor->cat_name}}
+																@foreach($categor->children as $cate)
+																<option value="{{$cate->cat_id}}">-{{$cate->cat_name}}
+
+																	@foreach($cate->children as $cat)
+																	<option value="{{$cat->cat_id}}">--{{$cat->cat_name}}</option>
+																	@endforeach
+
+																 </option>
+																@endforeach
+														</option>
+														@endforeach
+
+													</select>
+													<div class="help-block with-errors"></div>
+												</div>
 											</div>
-										</div>
+
+
 
 										<div class="col-xs-6 col-sm-6">
 											<div class="form-group">
@@ -145,30 +158,40 @@
 													</div>
 												</div>
 
-												<div class="col-xs-6 col-sm-6">
-											<div class="form-group">
-												<label>Tenderin kateqroiyası</label>
-												<select class="form-control" name="tender_category_id">
-													<option style="display:none" value="">Seçin</option>
-													@foreach($category as $categor)
-													<option value="{{$categor->cat_id}}">{{$categor->cat_name}}
-															@foreach($categor->children as $cate)
-															<option value="{{$cate->cat_id}}">-{{$cate->cat_name}}
 
-																@foreach($cate->children as $cat)
-																<option value="{{$cat->cat_id}}">--{{$cat->cat_name}}</option>
-																@endforeach
-
-															 </option>
-															@endforeach
-													</option>
-													@endforeach
-
-												</select>
-												<div class="help-block with-errors"></div>
+											<div class="col-xs-6 col-sm-6">
+												<div class="form-group">
+													<label>Tenderin vəziyyəti</label>
+													<select id="typeT" class="form-control" name="tender_private">
+														<option style="display:none" selected disabled value="">Seçin</option>
+														<option value="1">Açıq Tender</option>
+														<option value="0">Qapalı Tender</option>
+													</select>
+													<div class="help-block with-errors"></div>
+												</div>
 											</div>
-										</div>
 
+											<div style="display:none" id="comp" class="col-xs-6 col-sm-6">
+												<div class="form-group">
+													<label>Dəvətli şirkətlər</label>
+													<select data-style="bck" class="form-control selectpicker " name="tc_company_id[]" title="Şirkətləri seçin" multiple data-selected-text-format="count > 3">
+														@foreach($companies as $c)
+														<option value="{{$c->c_id}}">{{$c->c_name}}</option>
+														@endforeach
+													</select>
+													<div class="help-block with-errors"></div>
+												</div>
+											</div>
+
+											<script type="text/javascript">
+												$('#typeT').change(function(){
+													if ($("#typeT").val() == '0') {
+														$('#comp').show(300);
+													}else{
+														$('#comp').hide(300);
+													}
+												});
+											</script>
 
 
 												<div class="col-xs-12 col-sm-12">

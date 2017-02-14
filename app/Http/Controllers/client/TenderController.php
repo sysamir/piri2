@@ -6,8 +6,14 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Categories;
 use App\Tender;
+use App\Companies;
+use App\TenderCompanies;
 
 use Auth;
+use Session;
+
+use App\Notifications\TenderRequest;
+
 
 class TenderController extends Controller
 {
@@ -28,8 +34,9 @@ class TenderController extends Controller
      */
     public function create()
     {
+      $companies = Companies::where('c_confirmed','1')->get();
       $category = Categories::with('children','parent')->whereNull('cat_parent')->orderBy('cat_id','desc')->get();
-      return view('client.tender.create',compact('category'));
+      return view('client.tender.create',compact('category','companies'));
     }
 
     /**
@@ -67,7 +74,7 @@ class TenderController extends Controller
 
       $path = $request->file('tender_image')->store('Tender','public');
       $user = Auth::guard()->user()->id;
-      Tender::create([
+      $t = Tender::create([
           'tender_name' => $request['tender_name'],
           'tender_desc' => $request['tender_desc'],
           'tender_address' => $request['tender_address'],
@@ -81,10 +88,20 @@ class TenderController extends Controller
           'tender_deadline' => $request['tender_deadline'],
           'tender_private' => $private,
           'tender_created_by_id' => $user,
-      ]);
+      ])->tender_id;
 
+        foreach ($request['tc_company_id'] as $c) {
+          TenderCompanies::create([
+            'tc_tender_id' => $t,
+            'tc_company_id' => $c
+          ]);
+          $ten = Tender::findOrFail($t);
+          $cmp = Companies::findOrFail($c);
+          $cmp->user->notify(new TenderRequest($ten));
+        }
 
-      return redirect()->to('/profile');
+      Session::flash('mesaj', 'Tender yaradıldı!');
+      return redirect()->to('/');
     }
 
     /**

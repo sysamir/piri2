@@ -20,4 +20,10 @@ class Companies extends Model
     return $this->belongsToMany('App\Categories', 'cc_relations', 'cc_company_id', 'cc_cat_id');
   }
 
+  public function user(){
+
+        return $this->belongsTo(User::class, 'c_user_id');
+
+  }
+
 }

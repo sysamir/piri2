@@ -343,7 +343,7 @@ p:last-child {
 		body {
 				font-size: 14px;
 		}
-		
+
 		h1 {
 				font-size: 46px;
 		}
@@ -367,7 +367,7 @@ p:last-child {
 		h6 {
 				font-size: 13px;
 		}
-		
+
 		p.lead {
 				font-size: 21px;
 		}
@@ -6253,4 +6253,10 @@ h6.heading {
         flex: 0 0 100%;
         max-width: 100%
     }
+}
+
+.bck{
+  background-color: #fff;
+  border: 1px solid #ddd;
+  font-size: 14px;
 }

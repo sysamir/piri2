@@ -33,8 +33,7 @@
 
 										<div class="tab-style-1 detail-tab">
 											<div class="tab-style-1-header clearfix">
-
-													<a data-toggle="modal" href="#enquiryModal" class="btn btn-info pull-right pull-left-xss">Təklif ver</a>
+													<a id="offerButton" class="btn btn-info pull-right pull-left-xss">Təklif ver</a>
 											</div>
 
 											<div id="myTabContent" class="tab-content">
@@ -115,7 +114,7 @@
 
 													<li><span class="absolute">Son Tarix </span>{{date("Y-m-d",strtotime($Slug->created_at))}}</li>
 													<li><span class="absolute">Kateqoriya </span>{{$Slug->category->cat_name}}</li>
-										<li><span class="absolute">Qiymət:</span>{{$Slug->tender_cost_value}} {{$Slug->tender_cost_currency}}</li>
+													<li><span class="absolute">Qiymət:</span>{{$Slug->tender_cost_value}} {{$Slug->tender_cost_currency}}</li>
 
 												</ul>
 
@@ -137,11 +136,81 @@
 								<p>{{$Slug->tender_desc}}</p>
 
 
+							</div>
 
 
+							<div style="display:none" id="offerDiv" class="GridLex-col-12_sm-12_xs-12">
+
+								<div class="contact-form-wrapper-boxed">
+
+									<div class="section-title text-left mb-20">
+
+										<h4>Təklif vermək</h4>
+
+									</div>
+
+									<form method="POST" action="{{ url('/teklif-ver') }}">
+										{{ csrf_field() }}
+										<div class="messages"></div>
+
+										<div class="controls">
+
+											<div class="row">
+
+												<div class="col-xs-12 col-sm-12">
+													<div class="form-group">
+														<label for="form_name">Təklif olunan məbləğ ({{$Slug->tender_cost_currency}})<span class="font10 text-danger"></span></label>
+														<input type="number" name="sum" class="form-control" placeholder="sadəcə rəqəm daxil edin *" required >
+														<div class="help-block with-errors"></div>
+													</div>
+												</div>
+
+												<div class="col-xs-12 col-sm-12">
+													<div class="form-group">
+														<label for="form_name">Çatdırılma tarixi <span class="font10 text-danger"></span></label>
+														<input  type="date" name="date" class="form-control" required >
+														<div class="help-block with-errors"></div>
+													</div>
+												</div>
+
+												<div class="col-xs-12 col-sm-12">
+													<div class="form-group">
+														<label for="form_message">Təsvir <span class="font10 text-danger"></span></label>
+														<textarea name="desc" class="form-control" placeholder="Daxil edin *" rows="8" required ></textarea>
+													</div>
+												</div>
+												<input type="hidden" name="tender" value="{{$Slug->tender_id}}">
+												<div class="col-xs-12 col-sm-12">
+													<input type="submit" class="btn btn-primary btn-send mt-10" value="Göndər">
+												</div>
+
+
+											</div>
+
+										</div>
+
+									</form>
+
+								</div>
 
 							</div>
 
+							<br/>
+							<br/>
+							<br/>
+							@if($Slug->tender_created_by_id == auth()->user()->id)
+							<div class="section-title text-left mb-20">
+								<h4>Təkliflər</h4>
+								<p>sadəcə siz görürsünüz.</p>
+								@foreach($Slug->offers as $o)<br/>
+								<b>Şirkət:</b> {{$o->user->company->c_name}}<br/>
+								<b>Təklif:</b> {{$o->offer_cost}} {{$Slug->tender_cost_currency}}<br/>
+								<b>Təsviri:</b> {{$o->offer_desc}}<br/>
+								<b>Çatdırılma tarixi:</b> {{$o->offer_delivery_datatime}}<br/>
+								@if($o->offer_winner == '0')<a href="/teklif-qebul/{{$Slug->tender_id}}/{{$o->offer_id}}">Təklifi qəbul et</a>@endif
+								@endforeach
+							</div>
+							@endif
 						</div>
 
 						<div class="col-xs-12 col-sm-4 col-md-3">
@@ -252,11 +321,6 @@
 
 
 
-
-
-
-
-
 							</div>
 
 						</div>
@@ -268,5 +332,10 @@
 				</div>
 
 			</div>
-
+<script type="text/javascript">
+$('#offerButton').click(function() {
+  $("#offerDiv").show(300);
+	$("input[name='sum']").focus();
+});
+</script>
 @endsection

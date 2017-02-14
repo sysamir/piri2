@@ -24,7 +24,7 @@ class CreateTendersOffers extends Migration
 
             $table->text('offer_desc');
             $table->string('offer_cost');
-            $table->dateTime('offer_delivery_datatime');
+            $table->date('offer_delivery_datatime');
             $table->boolean('offer_winner');
             $table->timestamps();
         });

@@ -1,0 +1,1 @@
+<li><i class="text-primary fa fa-check"></i><b>{!! $n->data['tender_name'] !!}</b> tenderinə verdiyiniz təkif qəbul olundu - <a href="/tenderler/{!! $n->data['tender_id'] !!}/{!! $n->data['tender_slug'] !!}">ətraflı</a></li>

@@ -1,0 +1,1 @@
+<li><i class="text-primary fa fa-check"></i><b>{!! $n->data['tender_name'] !!}</b> qapalı tenderinə dəvət aldınız - <a href="/tenderler/{!! $n->data['tender_id'] !!}/{!! $n->data['tender_slug'] !!}">ətraflı</a></li>
