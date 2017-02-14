@@ -107,7 +107,16 @@
 											<div class="inner">
 
 												<ul class="specification-list">
+													<li><span class="absolute">Əlavə Edən:</span>@if($Slug->person)
 
+														{{$Slug->person->u_name}}
+
+														@else
+
+														{{$Slug->company->c_name}}
+
+																@endif
+															</li>
 													<li><span class="absolute">Tender Adı:</span> {{$Slug->tender_name}}</li>
 													<li><span class="absolute">Address:</span> {{$Slug->tender_address}}</li>
 													<li><span class="absolute">E-poçt:</span>{{$Slug->tender_mail}}</li>

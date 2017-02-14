@@ -17,13 +17,13 @@
         <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
 
           <!-- Hero heading -->
-          <h1 class="animated fadeInUp">Welcome to Taladrod</h1>
+          <h1 class="animated fadeInUp">GoTender</h1>
 
           <!-- Hero subheading -->
-          <p class="animated fadeInUp delay_1">Buy your new car or used car. We have more than a thousand cars for you to choose. The buying process here is so easy to be done.</p>
+          <p class="animated fadeInUp delay_1">Biz necə işləyirik ?</p>
 
           <div class="text-center text-left-xs mt-30">
-            <a href="#" class="animated fadeInUp delay_2 btn btn-primary btn-lg">Learn More</a>
+            <a href="#" class="animated fadeInUp delay_2 btn btn-primary btn-lg">Daha Ətraflı</a>
           </div>
 
         </div>
@@ -109,107 +109,6 @@
 
   </div>
 
-  <div class="section welcome-wrapper">
-
-    <div class="container">
-
-      <div class="row">
-
-        <div class="col-sm-12 col-md-8">
-          <div class="section-title-2">
-            <h2>Welcome to Taladrod</h2>
-          </div>
-
-          <p>Resembled at perpetual no believing is otherwise sportsman. Is do he dispatched cultivated travelling astonished. Melancholy am considered possession on collecting everything. Doubtful on an juvenile as of servants insisted. Judge why maids led sir whose guest drift her point.</p>
-
-          <div class="featured-item-wrapper mt-30">
-
-            <div class="GridLex-gap-30">
-
-              <div class="GridLex-grid-noGutter-equalHeight">
-
-                <div class="GridLex-col-6_sm-6_xs-12_xss-12">
-
-                  <div class="featured-item">
-
-                    <div class="icon">
-                      <i class="fa fa-thumbs-up"></i>
-                    </div>
-
-                    <div class="content">
-                      <h5>Trusted By Thousands</h5>
-                      <p>Do in laughter securing smallest sensible no mr hastened.</p>
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <div class="GridLex-col-6_sm-6_xs-12_xss-12">
-
-                  <div class="featured-item">
-
-                    <div class="icon">
-                      <i class="fa fa-pie-chart"></i>
-                    </div>
-
-                    <div class="content">
-                      <h5>Wide Range Of Vehicles</h5>
-                      <p>As perhaps proceed in in brandon of limited unknown greatly.</p>
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <div class="GridLex-col-6_sm-6_xs-12_xss-12">
-
-                  <div class="featured-item">
-
-                    <div class="icon">
-                      <i class="fa fa-balance-scale"></i>
-                    </div>
-
-                    <div class="content">
-                      <h5>Professional Dealers</h5>
-                      <p>Distrusts fulfilled happiness unwilling as explained of difficult.</p>
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <div class="GridLex-col-6_sm-6_xs-12_xss-12">
-
-                  <div class="featured-item">
-
-                    <div class="icon">
-                      <i class="fa fa-money"></i>
-                    </div>
-
-                    <div class="content">
-                      <h5>Faster Buy &amp; Sell</h5>
-                      <p>No landlord of peculiar ladyship attended if contempt ecstatic.</p>
-                    </div>
-
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="welcome-image-bg" style="background-image:url('images/welcome/02.jpg');"></div>
-
-    </div>
-  </div>
 
   <div class="bg-light section">
     <div class="container">
@@ -217,38 +116,40 @@
       <div class="row">
         <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
           <div class="section-title text-center">
-            <h2>Recently Added Cars</h2>
-            <p>One sportsman tolerably him extensive put she immediate.</p>
+            <h2>Yeni Tenderlər</h2>
+
           </div>
         </div>
       </div>
 
-      <div class="car-item-wrapper">
 
+
+
+      <div class="car-item-wrapper">
         <div class="GridLex-gap-30">
 
           <div class="GridLex-grid-noGutter-equalHeight GridLex-grid-center">
-
+  @foreach($tenderindex as $c)
             <div class="GridLex-col-3_sm-6_xs-6_xss-12">
 
               <div class="car-item">
 
-                <a href="#">
+                <a href="/tenderler/{{$c->tender_id}}/{{$c->tender_name}}">
                   <div class="image">
-                    <img src="images/car/11.jpg" alt="Car" />
+                    <img src="{{url('/uploads/images/'.$c->tender_image)}}" alt="Car">
                   </div>
                   <div class="content">
-                    <h5>Mercedes-Benz</h5>
-                    <h6>E250 CDI Coupe</h6>
-                    <p class="price">$109,535</p>
+                    <h5>{{$c->tender_name}}</h5>
+                    <h6>{{substr($c->tender_desc,0,20)}}.....</h6>
+                    <p class="price">{{$c->tender_cost_value}} {{$c->tender_cost_currency}}</p>
                   </div>
                   <div class="bottom">
                     <ul class="car-meta clearfix">
                       <li>
-                        <i class="fa fa-cogs"></i> Diesel
+                        <i class="fa fa-cogs"></i> {{$c->category->cat_name}}
                       </li>
                       <li>
-                        <i class="fa fa-tachometer"></i> 2,500cc.
+                        <i class="fa fa-tachometer"></i> {{date("Y-m-d",strtotime($c->created_at))}}
                       </li>
                     </ul>
                   </div>
@@ -257,490 +158,27 @@
               </div>
 
             </div>
-
-            <div class="GridLex-col-3_sm-6_xs-6_xss-12">
-
-              <div class="car-item">
-
-                <a href="#">
-                  <div class="image">
-                    <img src="images/car/02.jpg" alt="Car" />
-                  </div>
-                  <div class="content">
-                    <h5>SEAT</h5>
-                    <h6>Leon Cupra</h6>
-                    <p class="price">32,887$</p>
-                  </div>
-                  <div class="bottom">
-                    <ul class="car-meta clearfix">
-                      <li>
-                        <i class="fa fa-cogs"></i> Gasoline
-                      </li>
-                      <li>
-                        <i class="fa fa-tachometer"></i> 2,000cc.
-                      </li>
-                    </ul>
-                  </div>
-                </a>
-
-              </div>
-
-            </div>
-
-            <div class="GridLex-col-3_sm-6_xs-6_xss-12">
-
-              <div class="car-item">
-
-                <a href="#">
-                  <div class="image">
-                    <img src="images/car/03.jpg" alt="Car" />
-                  </div>
-                  <div class="content">
-                    <h5>Porsche</h5>
-                    <h6>Cayenne Turbo S</h6>
-                    <p class="price">325,475$</p>
-                  </div>
-                  <div class="bottom">
-                    <ul class="car-meta clearfix">
-                      <li>
-                        <i class="fa fa-cogs"></i> Gasoline
-                      </li>
-                      <li>
-                        <i class="fa fa-tachometer"></i> 2,000cc.
-                      </li>
-                    </ul>
-                  </div>
-                </a>
-
-              </div>
-
-            </div>
-
-            <div class="GridLex-col-3_sm-6_xs-6_xss-12">
-
-              <div class="car-item">
-
-                <a href="#">
-                  <div class="image">
-                    <img src="images/car/04.jpg" alt="Car" />
-                  </div>
-                  <div class="content">
-                    <h5>Ford</h5>
-                    <h6>Kuga</h6>
-                    <p class="price">$40,475</p>
-                  </div>
-                  <div class="bottom">
-                    <ul class="car-meta clearfix">
-                      <li>
-                        <i class="fa fa-cogs"></i> Diesel
-                      </li>
-                      <li>
-                        <i class="fa fa-tachometer"></i> 3,000cc.
-                      </li>
-                    </ul>
-                  </div>
-                </a>
-
-              </div>
-
-            </div>
+@endforeach
 
           </div>
 
         </div>
-
       </div>
+
+
+
 
       <div class="text-center mt-70">
-        <a href="#" class="btn btn-primary btn-lg">Browse More Cars</a>
+        <a href="/tenderler" class="btn btn-primary btn-lg">Daha Çox</a>
       </div>
 
     </div>
 
   </div>
 
-  <div class="section">
-    <div class="container">
 
-      <div class="row">
-        <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-          <div class="section-title text-center">
-            <div class="section-title">
-              <h2>Browser By Brands</h2>
-              <p>Continuing interested ten stimulated prosperous frequently.</p>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="brand-item-wrapper row gap-0">
-
-        <div class="col-xss-4 col-xs-3 col-sm-2 mb-30">
-          <a href="#">
-            <img src="images/car-brand/01.png" alt="Car Brand" />
-          </a>
-        </div>
-
-        <div class="col-xss-4 col-xs-3 col-sm-2 mb-30">
-          <a href="#">
-            <img src="images/car-brand/02.png" alt="Car Brand" />
-          </a>
-        </div>
-
-        <div class="col-xss-4 col-xs-3 col-sm-2 mb-30">
-          <a href="#">
-            <img src="images/car-brand/03.png" alt="Car Brand" />
-          </a>
-        </div>
-
-        <div class="col-xss-4 col-xs-3 col-sm-2 mb-30">
-          <a href="#">
-            <img src="images/car-brand/04.png" alt="Car Brand" />
-          </a>
-        </div>
-
-        <div class="col-xss-4 col-xs-3 col-sm-2 mb-30">
-          <a href="#">
-            <img src="images/car-brand/05.png" alt="Car Brand" />
-          </a>
-        </div>
-
-        <div class="col-xss-4 col-xs-3 col-sm-2 mb-30">
-          <a href="#">
-            <img src="images/car-brand/06.png" alt="Car Brand" />
-          </a>
-        </div>
-
-        <div class="col-xss-4 col-xs-3 col-sm-2 mb-30">
-          <a href="#">
-            <img src="images/car-brand/07.png" alt="Car Brand" />
-          </a>
-        </div>
-
-        <div class="col-xss-4 col-xs-3 col-sm-2 mb-30">
-          <a href="#">
-            <img src="images/car-brand/08.png" alt="Car Brand" />
-          </a>
-        </div>
-
-        <div class="col-xss-4 col-xs-3 col-sm-2 mb-30">
-          <a href="#">
-            <img src="images/car-brand/09.png" alt="Car Brand" />
-          </a>
-        </div>
-
-        <div class="col-xss-4 col-xs-3 col-sm-2 mb-30">
-          <a href="#">
-            <img src="images/car-brand/10.png" alt="Car Brand" />
-          </a>
-        </div>
-
-        <div class="col-xss-4 col-xs-3 col-sm-2 mb-30">
-          <a href="#">
-            <img src="images/car-brand/11.png" alt="Car Brand" />
-          </a>
-        </div>
-
-        <div class="col-xss-4 col-xs-3 col-sm-2 mb-30">
-          <a href="#">
-            <img src="images/car-brand/12.png" alt="Car Brand" />
-          </a>
-        </div>
-
-      </div>
-
-      <div class="text-center mt-40">
-        <a href="#" class="btn btn-primary btn-lg">Browse More Brands</a>
-      </div>
-
-
-    </div>
-  </div>
-
-  <div class="bg-light section">
-
-    <div class="container mb-5">
-
-      <div class="row">
-        <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-          <div class="section-title text-center">
-            <h2>Our Services</h2>
-            <p>Hold long he open knew occasional boisterous as solicitude to introduced.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-
-        <div class="col-sm-12 col-md-4 mb-30-sm">
-
-          <div class="featured-header-most-top">
-
-            <h5><span class="bg-light">First Car Advice</span></h5>
-            <div class="icon"><i class="fa fa-commenting"></i></div>
-            <p>Unpleasant astonished an diminution up partiality. Noisy an their of meant bachelor improved. Studied however out fortune windows.</p>
-            <a href="#" class="btn btn-primary">Learn More</a>
-          </div>
-
-        </div>
-
-        <div class="col-sm-12 col-md-4 mb-30-sm">
-
-          <div class="featured-header-most-top">
-
-            <h5><span class="bg-light">Car Finace &amp; Load</span></h5>
-            <div class="icon"><i class="fa fa-credit-card"></i></div>
-            <p>Death means up civil do an offer wound of. Called square an in afraid direct. Him son disposed produced humoured overcame she.</p>
-            <a href="#" class="btn btn-primary">Build</a>
-          </div>
-
-        </div>
-
-        <div class="col-sm-12 col-md-4">
-
-          <div class="featured-header-most-top">
-
-            <h5><span class="bg-light">Car Insurance</span></h5>
-            <div class="icon"><i class="fa fa-heartbeat"></i></div>
-            <p>Resolution diminution conviction so mr at unpleasing simplicity no. No it as breakfast up conveying earnestly immediate principle.</p>
-            <a href="#" class="btn btn-primary">Get Your Car</a>
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  <div class="section">
-    <div class="container">
-
-      <div class="row">
-        <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-          <div class="section-title-2 text-center">
-            <h2>WHAT PEOPLE SAY ABOUT US</h2>
-            <p><i class="fa fa-quote-left"></i></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-
-        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-
-          <div class="slick-gallery-slideshow slick-testimonial-wrapper mmt">
-
-            <div class="slider gallery-slideshow slick-testimonial">
-
-              <div class="slick-item">
-
-                <div class="testimonial-long">
-
-                  <p class="saying">
-                    If we landlord stanhill mr whatever pleasure supplied concerns so. Exquisite by it admitting cordially september newspaper an. Acceptance middletons am it favourable. It it oh happen lovers afraid.
-                  </p>
-
-                  <h5>Frank Abagnale</h5>
-                  <p class="he">New York, USA</p>
-
-                </div>
-
-              </div>
-
-              <div class="slick-item">
-
-                <div class="testimonial-long">
-
-                  <p class="saying">
-                    Sympathize did now preference unpleasing mrs few. Mrs for hour game room want are fond dare. For detract charmed add talking age.
-                  </p>
-
-                  <h5>Charles Ponzi</h5>
-                  <p class="he">Rome, Italy</p>
-
-                </div>
-
-              </div>
-
-              <div class="slick-item">
-
-                <div class="testimonial-long">
-
-                  <p class="saying">
-                    Who connection imprudence middletons too but increasing celebrated principles joy. Herself too improve gay winding ask expense are compact.
-                  </p>
-
-                  <h5>Joseph Weil</h5>
-                  <p class="he">Berlin, German</p>
-
-                </div>
-
-              </div>
-
-              <div class="slick-item">
-
-                <div class="testimonial-long">
-
-                  <p class="saying">
-                    Dashwood contempt on mr unlocked resolved provided of of. Stanhill wondered it it welcomed oh. Hundred no prudent he however smiling at an offence.
-                  </p>
-
-                  <h5>Victor Lustig</h5>
-                  <p class="he">Paris, France</p>
-
-                </div>
-
-              </div>
-
-              <div class="slick-item">
-
-                <div class="testimonial-long">
-
-                  <p class="saying">
-                    Preference imprudence contrasted to remarkably in on. Taken now you him trees tears any. Her object giving end sister except oppose.
-                  </p>
-
-                  <h5>George Parker</h5>
-                  <p class="he">New York, USA</p>
-
-                </div>
-
-              </div>
-
-              <div class="slick-item">
-
-                <div class="testimonial-long">
-
-                  <p class="saying">
-                    Simplicity end themselves increasing led day sympathize yet. General windows effects not are drawing man garrets. Common indeed garden you his ladies out yet.
-                  </p>
-
-                  <h5>Soapy Smith</h5>
-                  <p class="he">Alaska, USA</p>
-
-                </div>
-
-              </div>
-
-              <div class="slick-item">
-
-                <div class="testimonial-long">
-
-                  <p class="saying">
-                    Ladyship it daughter securing procured or am moreover mr. Put sir she exercise vicinity cheerful wondered. Continual say suspicion provision you neglected sir curiosity unwilling.
-                  </p>
-
-                  <h5>Eduardo de Valfierno</h5>
-                  <p class="he">Berlin, German</p>
-
-                </div>
-
-              </div>
-
-              <div class="slick-item">
-
-                <div class="testimonial-long">
-
-                  <p class="saying">
-                    Far quitting dwelling graceful the likewise received building. An fact so to that show am shed sold cold. Unaffected remarkably get yet introduced excellence terminated led.
-                  </p>
-
-                  <h4 class="uppercase">James Hogue</h4>
-                  <p class="he">Utah, USA</p>
-
-                </div>
-
-              </div>
-
-            </div>
-
-            <div class="clear"></div>
-
-            <div class="slider gallery-nav slick-testimonial-nav alt">
-              <div class="slick-item">
-                <div class="testimonial-man">
-                  <div class="image">
-                    <img src="images/man/01.jpg" alt="image"/>
-                  </div>
-                </div>
-              </div>
-              <div class="slick-item">
-                <div class="testimonial-man">
-                  <div class="image">
-                    <img src="images/man/02.jpg" alt="image"/>
-                  </div>
-                </div>
-              </div>
-              <div class="slick-item">
-                <div class="testimonial-man">
-                  <div class="image">
-                    <img src="images/man/03.jpg" alt="image"/>
-                  </div>
-                </div>
-              </div>
-              <div class="slick-item">
-                <div class="testimonial-man">
-                  <div class="image">
-                    <img src="images/man/04.jpg" alt="image"/>
-                  </div>
-                </div>
-              </div>
-              <div class="slick-item">
-                <div class="testimonial-man">
-                  <div class="image">
-                    <img src="images/man/05.jpg" alt="image"/>
-                  </div>
-                </div>
-              </div>
-              <div class="slick-item">
-                <div class="testimonial-man">
-                  <div class="image">
-                    <img src="images/man/06.jpg" alt="image"/>
-                  </div>
-                </div>
-              </div>
-              <div class="slick-item">
-                <div class="testimonial-man">
-                  <div class="image">
-                    <img src="images/man/07.jpg" alt="image"/>
-                  </div>
-                </div>
-              </div>
-              <div class="slick-item">
-                <div class="testimonial-man">
-                  <div class="image">
-                    <img src="images/man/08.jpg" alt="image"/>
-                  </div>
-                </div>
-              </div>
-              <div class="slick-item">
-                <div class="testimonial-man">
-                  <div class="image">
-                    <img src="images/man/09.jpg" alt="image"/>
-                  </div>
-                </div>
-              </div>
-              <div class="slick-item">
-                <div class="testimonial-man">
-                  <div class="image">
-                    <img src="images/man/10.jpg" alt="image"/>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-  </div>
-
-  <div class="bg-light section">
+  <div style="background:white!important;" class="bg-light section">
     <div class="container">
 
       <div class="row">
