@@ -112,7 +112,7 @@
     transition: all 0.3s ease-in-out 0s;
     letter-spacing: 1.5px;
     color: #636363;
-		font-family: 'Work Sans', sans-serif;
+		font-family: 'Roboto', sans-serif;
 }
 
 .navbar-nav > li > a .border {
@@ -658,7 +658,7 @@ a.search-form-close {
     color: #FFF;
     font-size: 26px;
     line-height: 34px;
-    font-weight: 300;
+    
     text-align: center;
 		margin: 0 0 35px;
 }
@@ -719,7 +719,7 @@ a.search-form-close {
     transition: all .3s ease;
     -webkit-transition: all .3s ease;
     -moz-transition: all .3s ease;
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
     letter-spacing: 1.5px;
     font-weight: 600;
 		font-size: 12px;
@@ -1182,7 +1182,7 @@ a.search-form-close {
 		font-size: 21px;
 		font-weight: 300;
 		letter-spacing: 0.5px;
-		font-family: "Merriweather", "Georgia", Times New Roman, Times, serif;
+		font-family: 'Roboto', sans-serif;
 }
 
 .call-to-action .btn {
@@ -1622,7 +1622,7 @@ a.search-form-close {
     padding: 12px 20px 10px;
 		display: inline-block;
 		font-size: 12px;
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
     letter-spacing: 1.5px;
     font-weight: 600;
 }
@@ -1652,7 +1652,7 @@ a.search-form-close {
     text-transform: uppercase;
     font-size: 16px;
     font-weight: 600;
-		font-family: 'Work Sans', sans-serif;
+		font-family: 'Roboto', sans-serif;
     letter-spacing: 0.5px;
 		padding-top: 8px;
 }
@@ -2546,7 +2546,7 @@ ul.social-share-sm.for-useful li a:after {
     color: #555;
     font-size: 12px;
     font-weight: 600;
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
     letter-spacing: 1.5px;
 }
 
@@ -2823,7 +2823,7 @@ ul.social-share-sm.for-useful li a:after {
 .tab-style-2 ul.tab-nav li a {
     text-transform: uppercase;
     font-size: 16px;
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 600;
     color: #818181;
     padding-bottom: 7px;
@@ -2882,7 +2882,7 @@ ul.social-share-sm.for-useful li a:after {
 .tab-style-3 ul.tab-nav li a {
     text-transform: uppercase;
     font-size: 14px;
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 600;
     color: #686868;
     letter-spacing: 1px;
@@ -2917,7 +2917,7 @@ ul.social-share-sm.for-useful li a:after {
     padding: 22px 10px 20px;
     text-transform: uppercase;
     font-size: 14px;
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 600;
 }
 

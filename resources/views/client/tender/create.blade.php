@@ -185,7 +185,7 @@
 
 											<script type="text/javascript">
 												$('#typeT').change(function(){
-													if ($("#typeT").val() == '0') {
+													if ($("#typeT").val() == '1') {
 														$('#comp').show(300);
 													}else{
 														$('#comp').hide(300);

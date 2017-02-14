@@ -144,7 +144,7 @@
 					<div class="row">
 
 						<div class="col-sm-6">
-							<p class="copy-right">&#169; Copyright 2016 TALADRod - Responsive Template.</p>
+							<p class="copy-right">&#169; Copyright 2016</p>
 						</div>
 
 

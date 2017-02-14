@@ -1,5 +1,5 @@
 @extends('admin.layouts.static')
 
 @section('content')
-girifsen
+Xoş Gəlmisiniz!
 @endsection
