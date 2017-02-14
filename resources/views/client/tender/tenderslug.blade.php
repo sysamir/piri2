@@ -117,10 +117,11 @@
 																@endif
 															</li>
 													<li><span class="absolute">Tender Adı:</span> {{$Slug->tender_name}}</li>
+													@if(count($winner) > 0)
 													<li><span class="absolute">Address:</span> {{$Slug->tender_address}}</li>
 													<li><span class="absolute">E-poçt:</span>{{$Slug->tender_mail}}</li>
 													<li><span class="absolute">Mobil:</span>{{$Slug->tender_phone}}</li>
-
+													@endif
 													<li><span class="absolute">Son Tarix </span>{{date("Y-m-d",strtotime($Slug->created_at))}}</li>
 													<li><span class="absolute">Kateqoriya </span>{{$Slug->category->cat_name}}</li>
 													<li><span class="absolute">Qiymət:</span>{{$Slug->tender_cost_value}} {{$Slug->tender_cost_currency}}</li>

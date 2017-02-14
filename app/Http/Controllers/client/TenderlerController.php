@@ -14,6 +14,7 @@ use App\Notifications\OffersN;
 use App\Notifications\OfferAccepted;
 
 use App\Categories;
+use App\Companies;
 use Illuminate\Support\Facades\Input;
 
 
@@ -31,9 +32,23 @@ class TenderlerController extends Controller
     }
 
     public function tenderSlug($id){
-        $Slug = Tender::with('category','username','person','company')->where('tender_status',1)->findOrFail($id);
+        $userid = Auth::user()->id;
+        $cmmp = Companies::findOrFail($userid);
+        $t = Tender::with('category','username','person','company','companies')->where('tender_status',1)->where('tender_id',$id)->first();
+        if($t->tender_private == '1'){
+          if($t->companies->where('tc_tender_id',$id)->first()->tc_company_id == $cmmp->c_id){
+            $Slug = $t->first();
+          }else {
+            Session::flash('mesaj', 'Bu tenderə baxmaq hüququnuz yoxdur! Sadəcə dəvət alan şirkətlər iştirak edə bilər.');
+            return back();
+          }
+
+        }else {
+          $Slug = $t->first();
+        }
         $tenderCATE = Categories::with('parent','children')->whereNull('cat_parent')->get();
-        return view('client.tender.tenderslug',compact('Slug','tenderCATE'));
+        $winner = Offers::where('offer_by_id',$userid)->where('offer_tender_id',$id)->where('offer_winner','1')->get();
+        return view('client.tender.tenderslug',compact('Slug','tenderCATE','winner'));
     }
 
     public function createOffer(Request $request)

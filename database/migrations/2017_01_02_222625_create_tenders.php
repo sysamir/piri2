@@ -19,7 +19,7 @@ class CreateTenders extends Migration
             $table->string('tender_slug');
             $table->text('tender_desc');
             $table->string('tender_image');
-            $table->integer('tender_status');
+            $table->integer('tender_status')->default(0);
             $table->string('tender_address');
             $table->string('tender_mail');
             $table->string('tender_phone');

@@ -45,7 +45,7 @@
 
                                           @elseif($ten->username->user_role == 1)
 
-                                          {$ten->company->c_name}}
+                                          {{$ten->company->c_name}}
 
                                           @else
 

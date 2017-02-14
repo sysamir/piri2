@@ -164,8 +164,8 @@
 													<label>Tenderin vəziyyəti</label>
 													<select id="typeT" class="form-control" name="tender_private">
 														<option style="display:none" selected disabled value="">Seçin</option>
-														<option value="1">Açıq Tender</option>
-														<option value="0">Qapalı Tender</option>
+														<option value="0">Açıq Tender</option>
+														<option value="1">Qapalı Tender</option>
 													</select>
 													<div class="help-block with-errors"></div>
 												</div>
