@@ -1,2 +1,1 @@
 @section('title', 'Tenderlərim')
-cecede

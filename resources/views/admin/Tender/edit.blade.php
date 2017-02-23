@@ -111,7 +111,7 @@
                       <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                           <div class="form-group">
                               <div class="form-line">
-                                  <input type="date" value="{{$tenderEdit->tender_deadline}}" class="form-control" name="tender_deadline" required>
+                                  <input type="text" value="{{$tenderEdit->tender_deadline}}" class="form-control" name="tender_deadline" readonly disabled>
                               </div>
                           </div>
                       </div>

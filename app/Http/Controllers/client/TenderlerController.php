@@ -33,10 +33,20 @@ class TenderlerController extends Controller
 
     public function tenderSlug($id){
         $userid = Auth::user()->id;
-        $cmmp = Companies::findOrFail($userid);
+
+        if (Auth::user()->user_role == 1) {
+          $cmmp = Auth::user()->company->c_id;
+        }else {
+          if ($userid !== Tender::find($id)->tender_created_by_id) {
+            Session::flash('mesaj', 'Tenderdə ancaq şirkətlər iştirak edə bilər.');
+            return back();
+          }
+
+        }
+
         $t = Tender::with('category','username','person','company','companies')->where('tender_status',1)->where('tender_id',$id)->first();
         if($t->tender_private == '1'){
-          if($t->companies->where('tc_tender_id',$id)->first()->tc_company_id == $cmmp->c_id){
+          if($t->companies->where('tc_tender_id',$id)->first()->tc_company_id == $cmmp){
             $Slug = $t->first();
           }else {
             Session::flash('mesaj', 'Bu tenderə baxmaq hüququnuz yoxdur! Sadəcə dəvət alan şirkətlər iştirak edə bilər.');

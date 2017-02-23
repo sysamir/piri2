@@ -38,23 +38,23 @@
                                   @foreach($tender as $ten)
                                     <tr>
                                       <td>{{$ten->tender_name}}</td>
-                                      <td>@if($ten->username->user_role == 0)
+                                        <td>
+                                          @if($ten->username->user_role == 0)
 
-                                          {{$ten->person->u_name}}
-
-
-                                          @elseif($ten->username->user_role == 1)
-
-                                          {{$ten->company->c_name}}
-
-                                          @else
-
-                                          {{$ten->person->u_name}}
+                                        {{$ten->username->person->u_name}}
 
 
-                                          @endif
+                                        @elseif($ten->username->user_role == 1)
 
-                                      </td>
+                                        {{$ten->username->company->c_name}}
+
+                                        @else
+
+                                        {{$ten->person->u_name}}
+
+
+                                        @endif
+                                        </td>
                                       <td>
 
                                         @if($ten->tender_status == '1')

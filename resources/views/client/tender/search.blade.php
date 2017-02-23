@@ -92,14 +92,15 @@
 						</div>
 					</div>
           @if(isset($cat))
+
 					<div class="car-item-wrapper">
 
-            @foreach($cat as $c)
+
 
 						<div class="GridLex-gap-30">
 
 							<div class="GridLex-grid-noGutter-equalHeight GridLex-grid-center">
-
+      @foreach($cat as $c)
 								<div class="GridLex-col-3_sm-6_xs-6_xss-12">
 
 									<div class="car-item">
@@ -128,13 +129,13 @@
 									</div>
 
 								</div>
-
+@endforeach
 
 							</div>
 
 						</div>
 
-            @endforeach
+
 
 					</div>
 

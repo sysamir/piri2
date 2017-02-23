@@ -90,15 +90,23 @@ class TenderController extends Controller
           'tender_created_by_id' => $user,
       ])->tender_id;
 
-        foreach ($request['tc_company_id'] as $c) {
-          TenderCompanies::create([
-            'tc_tender_id' => $t,
-            'tc_company_id' => $c
-          ]);
-          $ten = Tender::findOrFail($t);
-          $cmp = Companies::findOrFail($c);
-          $cmp->user->notify(new TenderRequest($ten));
+
+        if($private == 1){
+
+          foreach ($request['tc_company_id'] as $c) {
+            TenderCompanies::create([
+              'tc_tender_id' => $t,
+              'tc_company_id' => $c
+            ]);
+            $ten = Tender::findOrFail($t);
+            $cmp = Companies::findOrFail($c);
+            $cmp->user->notify(new TenderRequest($ten));
+          }
+
+
         }
+
+
 
       Session::flash('mesaj', 'Tender yaradıldı!');
       return redirect()->to('/');

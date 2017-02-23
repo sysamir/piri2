@@ -72,7 +72,7 @@
 												<div class="col-xs-6 col-sm-6">
 													<div class="form-group">
 														<label>Təvəllüd</label>
-														<input id="form_lastname" type="text" name="u_birth" value="{{$uProfile->person->u_birth}}"  class="form-control" placeholder="doğum tarixinizi daxil edin *" required="required" >
+														<input id="form_lastname" type="date" name="u_birth" value="{{$uProfile->person->u_birth}}"  class="form-control" placeholder="doğum tarixinizi daxil edin *" required="required" >
 														<div class="help-block with-errors"></div>
 													</div>
 												</div>

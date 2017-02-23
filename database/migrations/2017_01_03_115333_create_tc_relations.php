@@ -17,10 +17,10 @@ class CreateTcRelations extends Migration
             $table->increments('tc_id');
 
             $table->integer('tc_tender_id')->unsigned();
-            $table->foreign('tc_tender_id')->references('tender_id')->on('tenders');
+            $table->foreign('tc_tender_id')->references('tender_id')->on('tenders')->onDelete('cascade');
 
             $table->integer('tc_company_id')->unsigned();
-            $table->foreign('tc_company_id')->references('c_id')->on('companies');
+            $table->foreign('tc_company_id')->references('c_id')->on('companies')->onDelete('cascade');
 
             $table->timestamps();
         });
