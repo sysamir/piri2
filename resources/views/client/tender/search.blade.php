@@ -53,11 +53,7 @@
         </select>
 
       </div>
-      <div class="holder-item mb-20">
 
-      <input type="date"   class="form-control" name="vaxt" placeholder="" value="">
-
-      </div>
 
       <script type="text/javascript">
       $("#dateYnei").on("change", function() {

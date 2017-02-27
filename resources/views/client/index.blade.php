@@ -69,11 +69,11 @@
 
         </div>
 
-  <div class="holder-item mb-20" style="width:14%;">
+  <div class="holder-item mb-20" style="width:18%;">
         <input type="number" class="form-control" name="qiymet" placeholder="Qiymət" value="">
 
 </div>
-        <div class="holder-item mb-20" style="width:12%;">
+        <div class="holder-item mb-20" style="width:15%;">
           <select name="valyuta" class="custom-select" id="car-search-year">
 
             <option value="azn">AZN</option>
@@ -82,11 +82,7 @@
           </select>
 
         </div>
-        <div class="holder-item mb-20">
 
-        <input type="date"   class="form-control" name="vaxt" placeholder="" value="">
-
-        </div>
 
         <script type="text/javascript">
         $("#dateYnei").on("change", function() {

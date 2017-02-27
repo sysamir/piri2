@@ -33,7 +33,7 @@ Route::get('register/verify/{confirmationCode}', [
 ]);
 
 //admin side
-Route::group(['prefix' => 'dash', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'dash', 'middleware' => 'admin'], function () {
     Route::resource('/kateqoriya','admin\CategoriesController');
     Route::get('/', function () {return view('admin.index');});
     Route::resource('/istifadechiler','admin\UsersController');

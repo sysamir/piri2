@@ -420,9 +420,13 @@
                           </tr>
                         </table>
                       <table class="body-signature-block">
-                          <tr>
-
-                          </tr>
+                        <tr>
+                          <p>
+                            Əgər sizin poçt qutunuz yuxarıdakı aktiv etmək düyməsin dəstəkləmirsə və keçid açılmırsa aşağıdakı keçiddən istifadə edin.
+                          </p>
+                          <br/>
+                          <a href="{{ URL::to('register/verify/' . $kod) }}">{{ URL::to('register/verify/' . $kod) }}</a>
+                        </tr>
                         </table>
                       </td>
                       <td class="body-padding"></td>

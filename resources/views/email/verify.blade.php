@@ -426,7 +426,11 @@
                         style="background-color:#41CC00;background-image:url(https://www.filepicker.io/api/file/N8GiNGsmT6mK6ORk00S7);border:1px solid #407429;border-radius:4px;color:#ffffff;display:inline-block;font-family:sans-serif;font-size:17px;font-weight:bold;text-shadow: -1px -1px #47A54B;line-height:38px;text-align:center;text-decoration:none;width:230px;-webkit-text-size-adjust:none;mso-hide:all;">Aktiv etmək</a></div>
                         <table class="body-signature-block">
                           <tr>
-
+                            <p>
+                              Əgər sizin poçt qutunuz yuxarıdakı aktiv etmək düyməsin dəstəkləmirsə və keçid açılmırsa aşağıdakı keçiddən istifadə edin.
+                            </p>
+                            <br/>
+                            <a href="{{ URL::to('register/verify/' . $kod) }}">{{ URL::to('register/verify/' . $kod) }}</a>
                           </tr>
                         </table>
                       </td>

@@ -38,4 +38,13 @@ class User extends Authenticatable
     public function tender(){
       return $this->hasMany('App\Tender', 'tender_created_by_id', 'id')->where('tender_status','1');
     }
+
+    public function isAdmin()
+    {
+      if ($this->user_role == 2) {
+        return true;
+      }else{
+        return false;
+      }
+    }
 }
