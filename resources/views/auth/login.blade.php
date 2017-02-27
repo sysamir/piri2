@@ -29,7 +29,7 @@
     <div class="login-box">
         <div class="logo">
             <a href="javascript:void(0);">GoTender</a>
-            <small>İdarəetmə panelinə giriş</small>
+
         </div>
 
         <div class="card">
@@ -82,9 +82,7 @@
                         <div class="col-xs-6">
 
                         </div>
-                        <div class="col-xs-6 align-right">
-                            <a href="{{ url('/password/reset') }}">Şifrənin Bərpası</a>
-                        </div>
+                      
                     </div>
                 </form>
             </div>
